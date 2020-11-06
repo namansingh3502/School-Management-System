@@ -3,7 +3,6 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
-
     <link rel="stylesheet" type="text/css" href=""{% static 'login-page/login-page.css' %}>
 </head>
 
@@ -14,7 +13,7 @@
             <form method = "POST" action="">
                 {% csrf_token %}
                 {{ form }}
-
+                <button class="button" type="submit"> login </button>
             </form>
         </div>
     </div>
