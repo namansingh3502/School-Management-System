@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from .decorators import *
 from .form import *
+from .models import *
 
 
 
@@ -25,11 +26,14 @@ def signin(request):
             return redirect('dashboard')
         else:
             messages.info(request, 'Username OR password is incorrect')
+        return HttpResponse("error")
     else:
         context = {'form': Login_Form()}
         return render(request, 'templates/login_page.html', context)
 
-
-@login_required(login_url='login')
+@login_required(login_url='signin')
 def dashboard(request):
+
+
+
     return HttpResponse("dashboard")
