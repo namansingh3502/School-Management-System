@@ -36,4 +36,5 @@ def dashboard(request):
 
 
 
-    return HttpResponse("dashboard")
+
+    return render( request, 'templates/dashboard.html', context )
