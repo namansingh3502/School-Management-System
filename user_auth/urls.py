@@ -16,4 +16,6 @@ from . import views
 urlpatterns = [
     path('', views.signin, name="signin"),
     path('user_auth', views.signin, name="signin"),
+    path('profile/', views.profile, name="profile"),
+    path('logout', views.logoutUser, name="logout"),
 ]
