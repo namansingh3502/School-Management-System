@@ -13,4 +13,3 @@ from .models import * """
 @login_required(login_url='signin')
 def dashboard( request ):
     return HttpResponse("reached Dashboard")
-

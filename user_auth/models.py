@@ -21,7 +21,7 @@ PREFIX = [
         ('b', 'Ms.'),
         ('c', 'Mrs.'),
     ]
-class Profile(models.Model):
+class Employee(models.Model):
 
     user = models.OneToOneField( User, null = True, blank=True, on_delete = models.CASCADE )
     prefix = models.CharField( null= True, max_length=3, choices=PREFIX )
@@ -32,10 +32,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user
 
-class Data_Permission(models.Model):
+class Permissions(models.Model):
     user = models.OneToOneField( User, null = True, blank=True, on_delete = models.CASCADE )
-    Class = models.PositiveSmallIntegerField( null = True, choices=CLASS )
-    subject = models.CharField( max_length = 4, choices=SUBJECTS)
+    classes = models.PositiveSmallIntegerField( null = True, choices=CLASS )
+    subjects = models.CharField( max_length = 4, choices=SUBJECTS)
 
     def __str(self):
         return self.user
@@ -43,10 +43,8 @@ class Data_Permission(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Data_Permission.objects.create(user=instance)
-        Profile.objects.create(user=instance)
+        Employee.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    instance.data_permission.save()
+    instance.employee.save()

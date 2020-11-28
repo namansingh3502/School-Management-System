@@ -8,15 +8,15 @@ class Login_Form(forms.Form):
 
 class Profile_Form( ModelForm ):
     class Meta:
-        model = Profile
+        model = Employee
         exclude = ['user','first_login']
         
 
 class Permission_Form( ModelForm ):
     class Meta:
-        model = Data_Permission
+        model = Permissions
         exclude = ['user']
         widget = {
-            'Class': ChoiceField( choices = CLASS ),
+            'classes': ChoiceField( choices = CLASS ),
             'subjects': ChoiceField( choices= SUBJECTS )
         }

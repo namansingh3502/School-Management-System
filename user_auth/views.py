@@ -24,7 +24,7 @@ def signin(request):
         if user is not None:
             login(request, user)
 
-            if user.profile.first_login:
+            if user.employee.first_login:
                 return redirect('profile')
 
             group = None
@@ -50,8 +50,7 @@ def profile( request ):
     form_a = Profile_Form()
     form_b = Permission_Form()
     if request.method == 'POST':
-        #TODO validate and save user info
-        #TODO update first login check
+
         return HttpResponse('post response profile')
 
     context = { 'form_a': form_a, 'form_b': form_b }
