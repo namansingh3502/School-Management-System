@@ -27,7 +27,7 @@ class Employee(models.Model):
     prefix = models.CharField( null= True, max_length=3, choices=PREFIX )
     first_name = models.CharField( max_length = 30, blank=True)
     last_name = models.CharField( max_length = 30, blank=True)
-    first_login = models.BooleanField( max_length = 100, default=True )
+    first_login = models.BooleanField( default=False )
 
     def __str__(self):
         return self.user

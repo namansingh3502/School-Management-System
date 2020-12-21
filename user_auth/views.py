@@ -6,6 +6,8 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
+from django.forms import formset_factory
+
 from .decorators import *
 from .form import *
 from .models import *
@@ -47,11 +49,23 @@ def logoutUser(request):
 @login_required(login_url='signin')
 def profile( request ):
 
-    form_a = Profile_Form()
-    form_b = Permission_Form()
+    ProfileFormSet = formset_factory( Profile_Form )
+    PermissionFromSet = formset_factory( Permission_Form )
+
     if request.method == 'POST':
 
-        return HttpResponse('post response profile')
+        profile_formset = ProfileFormSet(request.POST, request.FILES, prefix='profile')
+        permission_formset = PermissionFromSet(request.POST, request.FILES, prefix='permission')
 
-    context = { 'form_a': form_a, 'form_b': form_b }
+        if profile_formset.is_valid():
+            print( 'profile' )
+        if permission_formset.is_valid():
+            print( 'permission' )
+
+        print( "errors       ", profile_formset.errors)
+        print( "errors2      ", profile_formset.non_form_errors())
+        print( "errors3      ", permission_formset.errors )
+        print( "errors4      ", permission_formset.non_form_errors() )
+
+    context = { 'ProfileFormSet': ProfileFormSet(prefix='profile'), 'PermissionFromSet': PermissionFromSet(prefix='permission') }
     return render(request, 'templates/profile.html', context)

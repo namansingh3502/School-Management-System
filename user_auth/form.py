@@ -10,7 +10,6 @@ class Profile_Form( ModelForm ):
     class Meta:
         model = Employee
         exclude = ['user','first_login']
-        
 
 class Permission_Form( ModelForm ):
     class Meta:
