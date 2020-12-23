@@ -6,21 +6,21 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # Create your models here.
-CLASS = [
-    ('a', 'choice1'),
-    ('b', 'choice2'),
-    ('c', 'choice3'),
-]
-SUBJECTS = [
-    ('a', 'subjects1'),
-    ('b', 'subjects2'),
-    ('c', 'subjects3'),
-]
-PREFIX = [
+CLASS = (
+    ('m', 'choice1'),
+    ('n', 'choice2'),
+    ('o', 'choice3'),
+)
+SUBJECTS = (
+    ('p', 'subjects1'),
+    ('q', 'subjects2'),
+    ('r', 'subjects3'),
+)
+PREFIX = (
         ('a', 'Mr.'),
         ('b', 'Ms.'),
         ('c', 'Mrs.'),
-    ]
+)
 class Employee(models.Model):
 
     user = models.OneToOneField( User, null = True, blank=True, on_delete = models.CASCADE )
@@ -33,9 +33,9 @@ class Employee(models.Model):
         return self.user
 
 class Permissions(models.Model):
-    user = models.OneToOneField( User, null = True, blank=True, on_delete = models.CASCADE )
-    classes = models.PositiveSmallIntegerField( null = True, choices=CLASS )
-    subjects = models.CharField( max_length = 4, choices=SUBJECTS)
+    user = models.ForeignKey( User, null = True, blank=True, on_delete = models.CASCADE )
+    classes = models.CharField( null = True, max_length = 30, choices=CLASS )
+    subjects = models.CharField( null = True, max_length = 30, choices=SUBJECTS )
 
     def __str(self):
         return self.user

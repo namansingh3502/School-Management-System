@@ -15,7 +15,3 @@ class Permission_Form( ModelForm ):
     class Meta:
         model = Permissions
         exclude = ['user']
-        widget = {
-            'classes': ChoiceField( choices = CLASS ),
-            'subjects': ChoiceField( choices= SUBJECTS )
-        }

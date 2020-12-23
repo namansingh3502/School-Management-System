@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from django.contrib.auth import authenticate, login, logout
@@ -33,8 +33,7 @@ def signin(request):
             if user.groups.exists():
                 group = user.groups.all()[0].name
 
-            if group == 'teacher':
-                return redirect('teacher')
+                return redirect(group)
 
         messages.info(request, 'Username OR password is incorrect')
         return HttpResponse("error")
@@ -57,15 +56,10 @@ def profile( request ):
         profile_formset = ProfileFormSet(request.POST, request.FILES, prefix='profile')
         permission_formset = PermissionFromSet(request.POST, request.FILES, prefix='permission')
 
-        if profile_formset.is_valid():
-            print( 'profile' )
-        if permission_formset.is_valid():
-            print( 'permission' )
+        if profile_formset.is_valid() and permission_formset.is_valid():
+               return HttpResponseRedirect( 'teacher:dashboard' )
 
-        print( "errors       ", profile_formset.errors)
-        print( "errors2      ", profile_formset.non_form_errors())
-        print( "errors3      ", permission_formset.errors )
-        print( "errors4      ", permission_formset.non_form_errors() )
-
-    context = { 'ProfileFormSet': ProfileFormSet(prefix='profile'), 'PermissionFromSet': PermissionFromSet(prefix='permission') }
+    context = { 'ProfileFormSet': ProfileFormSet(prefix='profile'),
+            'PermissionFromSet': PermissionFromSet(prefix='permission')
+                }
     return render(request, 'templates/profile.html', context)
