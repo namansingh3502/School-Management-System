@@ -9,9 +9,4 @@ class Login_Form(forms.Form):
 class Profile_Form( ModelForm ):
     class Meta:
         model = Employee
-        exclude = ['user','first_login']
-
-class Permission_Form( ModelForm ):
-    class Meta:
-        model = Permissions
-        exclude = ['user']
+        exclude = ['user','first_login']1

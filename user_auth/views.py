@@ -6,7 +6,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
-from django.forms import formset_factory
+from django.forms import formset_factory,modelformset_factory
 
 from .decorators import *
 from .form import *
@@ -33,7 +33,8 @@ def signin(request):
             if user.groups.exists():
                 group = user.groups.all()[0].name
 
-                return redirect(group)
+                if group == 'teacher':
+                    return redirect( 'teacher:dashboard')
 
         messages.info(request, 'Username OR password is incorrect')
         return HttpResponse("error")
@@ -49,17 +50,25 @@ def logoutUser(request):
 def profile( request ):
 
     ProfileFormSet = formset_factory( Profile_Form )
-    PermissionFromSet = formset_factory( Permission_Form )
+    PermissionFromSet = modelformset_factory( Permissions, exclude = ['user'] )
 
     if request.method == 'POST':
 
-        profile_formset = ProfileFormSet(request.POST, request.FILES, prefix='profile')
-        permission_formset = PermissionFromSet(request.POST, request.FILES, prefix='permission')
+        profile_form = ProfileFormSet(request.POST, request.FILES, prefix='profile')
+        permission_form = PermissionFromSet(request.POST, request.FILES, prefix='permission')
 
-        if profile_formset.is_valid() and permission_formset.is_valid():
-               return HttpResponseRedirect( 'teacher:dashboard' )
+        if profile_form.is_valid() and permission_form.is_valid():
 
-    context = { 'ProfileFormSet': ProfileFormSet(prefix='profile'),
+            profile_form.save()
+
+            instance = permission_form.save( commit=False )
+
+            print( 'profile_formset', profile )
+            print( 'permission_formset', instance )
+            return redirect(reverse( 'teacher:dashboard' ))
+
+    context = {
+            'ProfileFormSet': ProfileFormSet(prefix='profile'),
             'PermissionFromSet': PermissionFromSet(prefix='permission')
-                }
+            }
     return render(request, 'templates/profile.html', context)
