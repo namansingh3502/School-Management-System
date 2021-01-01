@@ -27,44 +27,50 @@ def signin(request):
             login(request, user)
 
             if user.employee.first_login:
-                return redirect('profile')
+                return redirect( reverse ( 'user_auth:profile' ))
 
             group = None
             if user.groups.exists():
                 group = user.groups.all()[0].name
 
                 if group == 'teacher':
-                    return redirect( 'teacher:dashboard')
+                    return redirect( reverse ( 'teacher:dashboard'))
 
         messages.info(request, 'Username OR password is incorrect')
-        return HttpResponse("error")
+        return HttpResponse("error here")
     else:
         context = { 'form': Login_Form() }
         return render(request, 'templates/login_page.html', context)
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect( reverse('user_auth:login'))
 
-@login_required(login_url='signin')
+@login_required(login_url='user_auth:signin')
 def profile( request ):
 
-    ProfileFormSet = formset_factory( Profile_Form )
-    PermissionFromSet = modelformset_factory( Permissions, exclude = ['user'] )
+    ProfileFormSet = modelformset_factory( Employee, exclude=['user', 'first_login'], extra=0, max_num=1)
+    PermissionFromSet = modelformset_factory( Permissions, exclude=['user','classes'] )
 
     if request.method == 'POST':
 
-        profile_form = ProfileFormSet(request.POST, request.FILES, prefix='profile')
+        profile_instance = Employee( first_login = True )
+        profile_form = ProfileFormSet(request.POST, request.FILES, prefix='profile' )
         permission_form = PermissionFromSet(request.POST, request.FILES, prefix='permission')
 
         if profile_form.is_valid() and permission_form.is_valid():
+            #profile_form.save()
 
-            profile_form.save()
+            profile_instances = profile_form.save( commit=False )
+            for instance in permission_instances:
+                print(instance)
+            #profile_instances.save()
 
-            instance = permission_form.save( commit=False )
+            permission_instances = permission_form.save( commit=False )
+            for instance in permission_instances:
+                print(instance)
+            permission_instances.save()
 
-            print( 'profile_formset', profile )
-            print( 'permission_formset', instance )
             return redirect(reverse( 'teacher:dashboard' ))
 
     context = {
