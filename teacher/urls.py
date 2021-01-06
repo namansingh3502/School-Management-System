@@ -16,13 +16,8 @@ Including another URLconf
 from django.urls import path
 from . import views
 
-app_name = 'accounts'
+app_name = 'teacher'
 
 urlpatterns = [
-    path('', views.signin, name='redirect'),
-    path('profile/', views.profile, name='profile'),
-
-
-    path('signin/', views.signin, name='login'),
-    path('logout/', views.logoutUser, name="logout"),
+    path('', views.dashboard, name='dashboard'),
 ]

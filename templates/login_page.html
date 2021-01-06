@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/login-page.css' %}" >
+</head>
+
+<body>
+     <div id = "form-box" class = "form-box">
+        <div id = "form-content" class = "form-content">
+            <form method = "POST" action="">
+                {% csrf_token %}
+                {{ form }}
+                <button class="button" type="submit"> login </button>
+            </form>
+        </div>
+    </div>
+</body>
