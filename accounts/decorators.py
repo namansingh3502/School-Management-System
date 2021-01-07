@@ -8,8 +8,11 @@ def authenticate_user(view_func):
             group = None
             if request.user.groups.exists():
                 group = request.user.groups.all()[0].name
+
             if group == 'teacher':
                 return redirect( reverse( 'teacher:dashboard' ))
+            else:
+                return HttpResponse("Something went wrong")
         else:
             return view_func( request, *args, **kwargs )
 

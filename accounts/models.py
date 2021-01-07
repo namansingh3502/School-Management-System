@@ -19,11 +19,11 @@ class Class(models.Model):
 
 class Permission(models.Model):
     user = models.ForeignKey( User, on_delete=models.CASCADE)
-    clas_s = models.ForeignKey( Class, on_delete=models.CASCADE)
+    Class = models.ForeignKey( Class, on_delete=models.CASCADE)
     subject = models.ForeignKey( Subject, on_delete=models.CASCADE)
 
     def __str__(self):
-        name = self.user.username + " " + self.clas_s.name + " " + self.subject.name
+        name = self.user.username + " " + self.Class.name + " " + self.subject.name
         return name
 
 class Profile(models.Model):
