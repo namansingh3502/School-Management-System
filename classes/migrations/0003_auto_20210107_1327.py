@@ -8,14 +8,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('accounts', '0004_auto_20210107_1052'),
-        ('class', '0002_auto_20210107_1318'),
+        ('classes', '0002_auto_20210107_1318'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='student',
             name='CLass',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='accounts.class'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='accounts.classes'),
             preserve_default=False,
         ),
         migrations.AddField(

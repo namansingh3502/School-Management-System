@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
-app_name = 'class'
+app_name = 'classes'
 
 urlpatterns = [
     path('teacher/<str:pk>/', views.teacher, name='teacher_dashboard'),

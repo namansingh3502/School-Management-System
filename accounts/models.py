@@ -5,17 +5,7 @@ from django.dispatch import receiver
 
 # Create your models here.
 
-class Subject(models.Model):
-    name = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.name
-
-class Class(models.Model):
-    name = models.CharField( max_length=10 )
-
-    def __str__(self):
-        return self.name
+from classes.models import *
 
 class Permission(models.Model):
     user = models.ForeignKey( User, on_delete=models.CASCADE)

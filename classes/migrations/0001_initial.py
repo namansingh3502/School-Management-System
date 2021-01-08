@@ -29,8 +29,8 @@ class Migration(migrations.Migration):
             name='Course',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('CLass', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.class')),
-                ('student', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='class.student_profile')),
+                ('CLass', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.classes')),
+                ('student', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='classes.student_profile')),
                 ('subject_1', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subject_1', to='accounts.subject')),
                 ('subject_2', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subject_2', to='accounts.subject')),
                 ('subject_3', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subject_3', to='accounts.subject')),
