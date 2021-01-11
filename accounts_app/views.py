@@ -34,7 +34,7 @@ def loginPage(request):
                 group = user.groups.all()[0].name
 
                 if group == 'teacher':
-                    return redirect( reverse( 'accounts:profile'))
+                    return redirect( reverse( 'teacher:dashboard'))
 
         messages.info(request, 'Username OR password is incorrect')
         context = {}
