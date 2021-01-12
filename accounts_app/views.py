@@ -34,7 +34,7 @@ def loginPage(request):
                 group = user.groups.all()[0].name
 
                 if group == 'teacher':
-                    return redirect( reverse( 'teacher:dashboard'))
+                    return redirect( reverse( 'teacher:home'))
 
         messages.info(request, 'Username OR password is incorrect')
         context = {}
@@ -49,16 +49,16 @@ def logoutUser(request):
     return redirect( reverse('accounts:login'))
 
 
-@login_required(login_url='user_auth:signin')
+@login_required(login_url='accounts:signin')
 def profile( request ):
 
-    profile = request.user.profile
+    user_profile = request.user.profile
     access = request.user.permission_set.all()
     """print( 'aaaaaaaaaaaaaaa  ', request.user.profile.first_name, request.user.profile.last_name )
        print( 'aaaaaaaaaaaaaaa  ', request.user.permission_set.all()[0].class_name )"""
 
     context = {
-        'profile': profile,
+        'user_profile': user_profile,
         'access': access,
     }
 

@@ -1,4 +1,5 @@
-"""school_app URL Configuration
+
+"""teachers_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -16,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
+app_name = 'teacher'
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('accounts_app.urls')),
-    path('teacher/', include('teachers_app.urls')),
+
+    path('', views.dashboard, name='home'),
+    #path('class/', include('class_app.urls')),
+
 ]

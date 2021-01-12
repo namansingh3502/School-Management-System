@@ -10,16 +10,16 @@
     <p> HELLO WORLD </p>
 
     <h2> Hello </h2>
-    <p>{{ profile.prefix }}  {{ profile.first_name }}  {{ profile.last_name }}</p>
+    <p>{{ user_profile.prefix }}  {{ user_profile.first_name }}  {{ user_profile.last_name }}</p>
 
-    <a href="{% 'accounts:profile' %}"></a>
+    <a href="{% url 'accounts:profile' %}"> Profile </a>
     <h2> Permission </h2>
 
     <table>
         {% for element in access %}
         <tr>
             <td>
-            <a href="{% url 'class' element.class_name %}"> {{ element.class_name }} {{ element.subject_name }} </a>
+            <a href=""> {{ element.class_name }} {{ element.subject_name }} </a>
             </td>
         </tr>
         {% endfor %}

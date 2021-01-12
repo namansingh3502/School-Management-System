@@ -9,7 +9,7 @@ def authenticate_user(view_func):
             if request.user.groups.exists():
                 group = request.user.groups.all()[0].name
             if group == 'teacher':
-                return redirect( reverse( 'teacher:dashboard' ))
+                return redirect( reverse( 'teacher:home' ))
         else:
             return view_func( request, *args, **kwargs )
 
