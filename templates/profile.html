@@ -10,7 +10,7 @@
     <p> HELLO WORLD </p>
     <a href="{% url 'teacher:home' %} "> Home </a>
     <h2> Profile </h2>
-    <p>{{ profile.prefix }}  {{ profile.first_name }}  {{ profile.last_name }}</p>
+    <p>{{ user_profile.prefix }}  {{ user_profile.first_name }}  {{ user_profile.last_name }}</p>
     <p>{{ profile.phone }}</p>
     <p>{{ profile.email }}</p>
 

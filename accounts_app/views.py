@@ -39,7 +39,6 @@ def loginPage(request):
         messages.info(request, 'Username OR password is incorrect')
         context = {}
         return render(request, 'templates/login_page.html', context)
-
     else:
         context = { 'form': Login_Form() }
         return render(request, 'templates/login_page.html', context)
