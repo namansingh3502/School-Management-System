@@ -31,7 +31,8 @@ class Profile(models.Model):
     first_login = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.user.username
+        name = self.first_name + " " + self.last_name
+        return name
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login-page/login-page.css' %}">
+</head>
+
+<body>
+    <p> HELLO WORLD </p>
+
+    <a href="{% url 'teacher:home' %}"> Profile </a>
+
+    <h2> {{ profile.name }} </h2>
+    <h3> Class Teacher {{ profile.class_teacher }} </h3>
+
+    <table>
+        {% for subject in subjects %}
+        <tr>
+            <td>
+                {{ subject.name }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>

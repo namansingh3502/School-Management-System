@@ -16,7 +16,7 @@ from django.contrib.auth.models import Group
 """
 from .models import *
 
-@login_required(login_url='user_auth:signin')
+@login_required(login_url='accounts:login')
 def dashboard( request ):
 
     user_profile = request.user.profile
@@ -29,4 +29,4 @@ def dashboard( request ):
         'access': access,
     }
 
-    return render(request, 'templates/dashboard.html', context)
+    return render(request, 'teachers/dashboard.html', context)
