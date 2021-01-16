@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class Permission(models.Model):
     user = models.ForeignKey( User, on_delete=models.CASCADE)
-    class_name = models.ForeignKey( 'class_app.Class', on_delete=models.CASCADE)
+    class_name = models.ForeignKey( 'class_app.Profile', on_delete=models.CASCADE)
     subject_name = models.ForeignKey( 'class_app.Subject', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -25,9 +25,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     prefix = models.CharField(null=True, max_length=4, choices=PREFIX)
     first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True)
+    phone = models.CharField(max_length=50, blank=True)
+    email = models.CharField(max_length=50, blank=True)
     first_login = models.BooleanField(default=True)
 
     def __str__(self):
