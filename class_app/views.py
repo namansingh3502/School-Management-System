@@ -9,12 +9,14 @@ from .models import *
 
 @login_required(login_url='accounts:login')
 def dashboard( request, class_name ):
-    current_class = Class.objects.get(name=class_name)
-    class_profile = current_class.profile_set.all()[0]
-    subjects = class_profile.subject.all()
+
+    current_class = Profile.objects.get(name=class_name)
+    subjects = current_class.subject.all()
+    students = current_class.profile_set.all()
 
     context = {
-        'profile': class_profile,
+        'profile': current_class,
         'subjects': subjects,
+        'students': students,
     }
     return render(request, 'class/dashboard.html', context)
