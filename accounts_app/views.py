@@ -51,13 +51,13 @@ def logoutUser(request):
 @login_required(login_url='accounts:signin')
 def profile( request ):
 
-    user_profile = request.user.profile
+    userprofile = request.user.user_profile
     access = request.user.permission_set.all()
     """print( 'aaaaaaaaaaaaaaa  ', request.user.profile.first_name, request.user.profile.last_name )
        print( 'aaaaaaaaaaaaaaa  ', request.user.permission_set.all()[0].class_name )"""
 
     context = {
-        'user_profile': user_profile,
+        'user_profile': userprofile,
         'access': access,
     }
 

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Profile(models.Model):
+class Student_Profile(models.Model):
     PREFIX = (
         ('Mr.', 'Mr.'),
         ('Ms.', 'Ms.'),
@@ -14,18 +14,19 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=50, blank=True )
     phone = models.CharField(max_length=50, blank=True )
     email = models.CharField(max_length=50, blank=True )
-    Class = models.ForeignKey( 'class_app.Profile', on_delete=models.CASCADE)
+    Class = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE)
 
     def __str__(self):
-        name = self.Class.name + self.first_name
+        name = self.Class.name + " " + self.first_name
         return name
 
 class Subject_Score(models.Model):
 
-    student = models.ForeignKey( Profile, on_delete=models.CASCADE )
-    subject = models.ForeignKey( 'class_app.Subject', models.CASCADE )
+    student = models.ForeignKey( Student_Profile, on_delete=models.CASCADE )
+    class_name = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE, default=1 )
 
+    subject = models.ForeignKey( 'class_app.Subject', models.CASCADE )
     score = models.CharField( max_length=3, null=True )
 
     def __str__(self):
-        return self.student
+        return self.student.first_name

@@ -19,13 +19,13 @@ from .models import *
 @login_required(login_url='accounts:login')
 def dashboard( request ):
 
-    user_profile = request.user.profile
+    profile = request.user.user_profile
     access = request.user.permission_set.all()
-    """print( 'aaaaaaaaaaaaaaa  ', request.user.profile.first_name, request.user.profile.last_name )
+    """print( 'aaaaaaaaaaaaaaa  ', request.user.user_profile.first_name, request.user.profile.last_name )
        print( 'aaaaaaaaaaaaaaa  ', request.user.permission_set.all()[0].class_name )"""
 
     context = {
-        'user_profile': user_profile,
+        'user_profile': profile,
         'access': access,
     }
 

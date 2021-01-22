@@ -5,4 +5,4 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Subject)
-admin.site.register(Profile)
+admin.site.register(Class_Profile)

@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class Permission(models.Model):
     user = models.ForeignKey( User, on_delete=models.CASCADE)
-    class_name = models.ForeignKey( 'class_app.Profile', on_delete=models.CASCADE)
+    class_name = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE)
     subject_name = models.ForeignKey( 'class_app.Subject', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -15,7 +15,7 @@ class Permission(models.Model):
         name += self.subject_name.name
         return name
 
-class Profile(models.Model):
+class User_Profile(models.Model):
     PREFIX = (
         ('Mr.', 'Mr.'),
         ('Ms.', 'Ms.'),
@@ -31,14 +31,14 @@ class Profile(models.Model):
     first_login = models.BooleanField(default=True)
 
     def __str__(self):
-        name = self.first_name + " " + self.last_name
+        name = self.prefix + " " + self.first_name + " " + self.last_name
         return name
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        User_Profile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    instance.user_profile.save()

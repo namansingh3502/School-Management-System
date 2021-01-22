@@ -23,5 +23,6 @@ app_name = 'class_app'
 urlpatterns = [
 
     path('<str:class_name>', views.dashboard, name='home'),
+    path('<str:class_name>/scoresheet', views.scoresheet, name='scoresheet'),
 
 ]
