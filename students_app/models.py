@@ -26,7 +26,7 @@ class Subject_Score(models.Model):
     class_name = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE, default=1 )
 
     subject = models.ForeignKey( 'class_app.Subject', models.CASCADE )
-    score = models.CharField( max_length=3, null=True )
+    score = models.CharField( max_length=3, default=0 )
 
     def __str__(self):
         return self.student.first_name

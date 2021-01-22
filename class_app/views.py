@@ -32,16 +32,11 @@ def scoresheet( request, class_name ):
 
     for student in students:
         for subject in subjects:
-            try:
-                sub_score = scores.get(student=student.pk, subject=subject.pk)
-            except Subject_Score.DoesNotExist:
-                sub_score = Subject_Score(
-                    student=student,
-                    class_name=current_class,
-                    subject=subject,
-                    score=0,
-                )
-                sub_score.save()
+            sub_score, created = Subject_Score.objects.get_or_create(
+                student=student,
+                class_name=current_class,
+                subject=subject )
+            sub_score.save()
 
     context = {
         'profile': current_class,
