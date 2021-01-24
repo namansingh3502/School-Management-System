@@ -4,5 +4,11 @@ from django.contrib import admin
 
 from .models import *
 
-admin.site.register(Permission)
-admin.site.register(User_Profile)
+@admin.register(Permission)
+class Permission_Admin(admin.ModelAdmin):
+    list_display = ('user', 'class_name', 'subject_name')
+    list_filter = ('user', 'class_name', 'subject_name')
+
+@admin.register(User_Profile)
+class User_Profile_Admin(admin.ModelAdmin):
+    list_display = ('user', 'first_name', 'last_name')

@@ -5,4 +5,7 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Subject)
-admin.site.register(Class_Profile)
+
+@admin.register(Class_Profile)
+class Class_Profile_Admin( admin.ModelAdmin ):
+    list_display = ('name', 'class_teacher')

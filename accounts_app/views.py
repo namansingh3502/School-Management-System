@@ -26,7 +26,7 @@ def loginPage(request):
         if user is not None:
             login(request, user)
 
-            if user.profile.first_login:
+            if user.user_profile.first_login:
                 return redirect( reverse( 'accounts:profile' ))
 
             group = None

@@ -24,5 +24,6 @@ urlpatterns = [
 
     path('<str:class_name>', views.dashboard, name='home'),
     path('<str:class_name>/scoresheet', views.scoresheet, name='scoresheet'),
+    path('<str:class_name>/<str:subject_name>/update_score', views.update_score, name='update_score')
 
 ]

@@ -8,23 +8,29 @@ from django.db.models.base import ObjectDoesNotExist
 
 from .models import *
 from students_app.models import *
+from .decorators import *
 
 @login_required(login_url='accounts:login')
+@permission_check
 def dashboard( request, class_name ):
 
     current_class = Class_Profile.objects.get(name=class_name)
     subjects = current_class.subject.all()
     students = current_class.student_profile_set.all()
+    permissions = request.user.permission_set.filter( class_name=current_class )
 
     context = {
         'profile': current_class,
         'subjects': subjects,
         'students': students,
+        'permissions': permissions,
     }
     return render(request, 'class/dashboard.html', context)
 
 @login_required(login_url='accounts:login')
+@permission_check
 def scoresheet( request, class_name ):
+
     current_class = Class_Profile.objects.get(name=class_name)
     students = current_class.student_profile_set.all()
     scores = current_class.subject_score_set.all()
@@ -46,3 +52,6 @@ def scoresheet( request, class_name ):
     }
 
     return render(request, 'class/scoresheet.html', context)
+
+def update_score(request, class_name, subject_name):
+    return HttpResponse('update score')

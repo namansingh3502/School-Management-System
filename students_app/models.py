@@ -14,11 +14,10 @@ class Student_Profile(models.Model):
     last_name = models.CharField(max_length=50, blank=True )
     phone = models.CharField(max_length=50, blank=True )
     email = models.CharField(max_length=50, blank=True )
-    Class = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE)
+    class_name = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE)
 
     def __str__(self):
-        name = self.Class.name + " " + self.first_name
-        return name
+        return self.first_name + " " + self.last_name
 
 class Subject_Score(models.Model):
 
