@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 class Student_Profile(models.Model):
@@ -25,7 +25,7 @@ class Subject_Score(models.Model):
     class_name = models.ForeignKey( 'class_app.Class_Profile', on_delete=models.CASCADE, default=1 )
 
     subject = models.ForeignKey( 'class_app.Subject', models.CASCADE )
-    score = models.CharField( max_length=3, default=0 )
+    score = models.IntegerField( default=0, validators=[MaxValueValidator(100), MinValueValidator(0)] )
 
     def __str__(self):
         return self.student.first_name

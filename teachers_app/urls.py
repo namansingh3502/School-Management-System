@@ -22,7 +22,7 @@ app_name = 'teacher'
 
 urlpatterns = [
 
-    path('', views.dashboard, name='home'),
+    path('', views.dashboard, name='dashboard'),
     path('class/', include('class_app.urls')),
 
 ]

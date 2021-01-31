@@ -8,7 +8,8 @@
 
 <body>
 
-    <a href="{% url 'teacher:home' %}"> Profile </a>
+    <a href="{% url 'teacher:dashboard' %}"> Home </a>
+    <a href="{% url 'accounts:profile' %}"> Profile </a>
 
     <h3> Class </h3>
     <h4> {{ profile.name }} </h4>
@@ -28,7 +29,7 @@
             {% endfor %}
         </tr>
         {% for student in students %}
-            <tr> {% load myfilters %}
+            <tr> {% load scoresheet %}
                 <td> {{ student.first_name }} {{ student.last_name }}</td>
                 {% for subject in subjects %}
                 <td> {{ scores|student_score:student.pk|get_subject_score:subject.pk }} </td>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login-page/login-page.css' %}">
+</head>
+
+<body>
+
+    <a href="{% url 'teacher:dashboard' %}"> Home </a>
+    <a href="{% url 'accounts:profile' %}"> Profile </a>
+
+    <h3> Class </h3>
+    <h4> {{ profile.name }} </h4>
+
+    <h3> Subject </h3>
+    <h4> {{subject.name}}</h4>
+
+    <form action="" method="POST" >
+                        {{ message.info }}
+        <input type="submit" value="Submit">
+        <table>{% csrf_token %}
+            <tr>
+                <th> Student Name </th>
+                <th> Marks </th>
+            </tr>
+
+            {% load update_scoresheet %}
+            {% for student in students %}
+            <tr>
+                <td> <label for="{{ student.first_name }}"> {{ student.first_name }} </label></td>
+                <td>
+                    <input type="number" id="score" name="{{ student.pk }}{{ student.first_name }}" min="0" max="100" value={{scores|get_student_score:student.pk}}>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</body>

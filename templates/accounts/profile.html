@@ -7,8 +7,8 @@
 </head>
 
 <body>
-    <p> HELLO WORLD </p>
-    <a href="{% url 'teacher:home' %} "> Home </a>
+    <a href="{% url 'teacher:dashboard' %}"> Home </a>
+
     <h2> Profile </h2>
     <p>{{ user_profile.prefix }}  {{ user_profile.first_name }}  {{ user_profile.last_name }}</p>
     <p>{{ profile.phone }}</p>
