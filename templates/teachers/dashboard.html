@@ -18,7 +18,7 @@
         {% for element in access %}
         <tr>
             <td>
-            <a href="{% url 'teacher:class_app:home' element.class_name  %}"> {{ element.class_name }} {{ element.subject_name }} </a>
+            <a href="{% url 'class_app:home' element.class_name  %}"> {{ element.class_name }} {{ element.subject_name }} </a>
             </td>
         </tr>
         {% endfor %}

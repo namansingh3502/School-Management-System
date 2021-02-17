@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login-page/login-page.css' %}">
+</head>
+
+<body>
+
+    <h2> Profile </h2>
+    <h4> name  : {{ profile.first_name }} </h4>
+    <h4> class : {{ profile.class }} </h4>
+
+    <h2> Scores </h2>
+    <table>
+        <tr>
+            <th> Subject Name </th>
+            <th> Score </th>
+        </tr>
+
+        {% for score in scores %}
+            <tr>
+                <td> {{ score.subject }} </td>
+                <td> {{ score.score }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>

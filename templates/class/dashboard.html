@@ -9,6 +9,7 @@
 <body>
 
     <a href="{% url 'teacher:dashboard' %}"> Home </a>
+    <br>
     <a href="{% url 'accounts:profile' %}"> Profile </a>
 
     <h3> Class </h3>
@@ -35,16 +36,16 @@
         {% for student in students %}
         <tr>
             <td>
-                {{ student.first_name }}
+                <a href="{% url 'students_app:student_profile' pk=student.pk name=student.first_name %}"> {{ student.first_name }} </a>
             </td>
         </tr>
         {% endfor %}
     </table>
 
-    <h4> <a href="{% url 'teacher:class_app:scoresheet' class_name=profile.name %}"> Class Marksheet </a> </h4>
+    <h4> <a href="{% url 'class_app:scoresheet' class_name=profile.name %}"> Class Marksheet </a> </h4>
 
     <h3> Update Marks </h3>
     {% for permission in permissions %}
-        <a href="{% url 'teacher:class_app:update_score' class_name=profile.name subject_name=permission.subject_name %}" > {{ permission.subject_name }} </a>
+        <a href="{% url 'class_app:update_score' class_name=profile.name subject_name=permission.subject_name %}" > {{ permission.subject_name }} </a>
     {% endfor %}
 </body>

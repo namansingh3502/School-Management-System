@@ -18,12 +18,10 @@ from django.urls import path, include
 
 from . import views
 
-app_name = 'class_app'
+app_name = 'students_app'
 
 urlpatterns = [
 
-    path('<str:class_name>', views.dashboard, name='home'),
-    path('<str:class_name>/scoresheet', views.scoresheet, name='scoresheet'),
-    path('<str:class_name>/<str:subject_name>/update_score', views.update_score, name='update_score'),
+    path('<int:pk>/<str:name>', views.student_profile, name='student_profile' ),
 
 ]

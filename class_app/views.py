@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.forms import modelformset_factory
+from django.contrib import messages
 
 # Create your views here.
 
@@ -66,19 +65,22 @@ def update_score(request, class_name, subject_name):
 
         for student in students:
             pk = str( student.pk ) + str( student.first_name )
-            updated_score = int(request.POST[pk])
-            if 0 <= updated_score <= 100:
-                pass
-            else:
+            try:
+                new_score = int(request.POST[pk])
+            except ValueError:
                 check = False
-                messages.info(request, 'Invalid input data')
-                break
+
         if check:
             for student in students:
                 pk = str( student.pk ) + str( student.first_name )
-                updated_score = request.POST[pk]
-                print(updated_score)
-                Subject_Score.objects.filter( student=student, class_name=current_class, subject=current_subject ).update(score=updated_score)
+                new_score = request.POST[pk]
+                Subject_Score.objects.filter(
+                    student=student,
+                    class_name=current_class,
+                    subject=current_subject ).update(score=new_score)
+            return redirect( 'class_app:scoresheet', class_name=class_name )
+        else:
+            messages.info(request, 'Invalid user input')
 
     context = {
         'subject': current_subject,

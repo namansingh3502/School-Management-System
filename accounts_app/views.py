@@ -37,9 +37,6 @@ def loginPage(request):
                     return redirect( reverse( 'teacher:dashboard'))
 
         messages.info(request, 'Username OR password is incorrect')
-        context = {}
-        return render(request, 'accounts/login_page.html', context)
-    else:
         context = { 'form': Login_Form() }
         return render(request, 'accounts/login_page.html', context)
 

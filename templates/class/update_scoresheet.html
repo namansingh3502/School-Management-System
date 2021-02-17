@@ -18,8 +18,15 @@
     <h4> {{subject.name}}</h4>
 
     <form action="" method="POST" >
-                        {{ message.info }}
+
         <input type="submit" value="Submit">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <table>{% csrf_token %}
             <tr>
                 <th> Student Name </th>

@@ -13,7 +13,13 @@
             <form method = "POST" action="">
                 {% csrf_token %}
                 {{ form }}
-                {{ message.info }}
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}"> {{ message }} </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
                 <button class="button" type="submit"> login </button>
             </form>
         </div>
