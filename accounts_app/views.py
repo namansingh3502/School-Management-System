@@ -27,6 +27,7 @@ def loginPage(request):
             login(request, user)
 
             if user.user_profile.first_login:
+                user.user_profile.first_login = False
                 return redirect( reverse( 'accounts:profile' ))
 
             group = None
@@ -37,8 +38,9 @@ def loginPage(request):
                     return redirect( reverse( 'teacher:dashboard'))
 
         messages.info(request, 'Username OR password is incorrect')
-        context = { 'form': Login_Form() }
-        return render(request, 'accounts/login_page.html', context)
+        return render(request, 'accounts/login_page.html')
+    else:
+        return render(request, 'accounts/login_page.html')
 
 def logoutUser(request):
     logout(request)

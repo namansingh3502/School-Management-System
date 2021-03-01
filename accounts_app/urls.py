@@ -21,7 +21,7 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('', views.loginPage ),
+    path('', views.loginPage, name="home" ),
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
 
