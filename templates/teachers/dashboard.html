@@ -1,27 +1,6 @@
-<!DOCTYPE html>
+{%  extends 'accounts/main.html' %}
 
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login-page/login-page.css' %}">
-</head>
+{% block content %}
+No contents here yet
 
-<body>
-
-    <h2> Hello </h2>
-    <p>{{ user_profile.prefix }}  {{ user_profile.first_name }}  {{ user_profile.last_name }}</p>
-
-    <a href="{% url 'accounts:profile' %}"> Profile </a>
-    <h2> Permission </h2>
-
-    <table>
-        {% for element in access %}
-        <tr>
-            <td>
-            <a href="{% url 'class_app:home' element.class_name  %}"> {{ element.class_name }} {{ element.subject_name }} </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-
-</body>
+{% endblock %}
