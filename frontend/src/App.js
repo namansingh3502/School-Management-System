@@ -10,9 +10,6 @@ const App = () => {
     <ThemeContext.Provider value={theme}>
       <div>
         <Router>
-          <header>
-            <Link to="/">School App</Link>
-          </header>
           <Switch>
             <Route path="/">
               <Login />
