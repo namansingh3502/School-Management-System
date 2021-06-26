@@ -1,38 +1,35 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
-
-const Login = () => {
+export default function Login(){
   const [username, updateUsername] = useState("");
   const [password, updatePassword] = useState("");
 
-   function requestLogin() {
-     const data = {
-       username: String(username),
-       password: String(password),
-     }
+  function requestLogin() {
+    const data = {
+     username: String(username),
+     password: String(password),
+    }
 
-     console.log('username : ', {username});
-     console.log('password : ', {password});
-     console.log('data : ', {data} );
-
-     fetch(`http://localhost:8000/auth/token/login/`,{
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify(data),
-       })
-       .then(response =>{
-         if( !response.ok ){
-            console.log( "status", response.status);
-            console.log( "body", response.body );
-            console.log( "response", response );
-         }
-         else{
-          return response.json();
-         }
-       })
-       .then( data => console.log( "data", data ) );
+    fetch(`http://localhost:8000/auth/token/login/`,{
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify(data),
+     })
+     .then(response =>{
+       if( !response.ok ){
+          console.log( "status", response.status);
+          console.log( "body", response.body );
+       }
+       else{
+        return response.json();
+       }
+     })
+     .then( data => {
+       const token = "Token " + data["auth_token"];
+       localStorage.setItem('auth_token', token);
+    });
   }
 
   return(
@@ -91,5 +88,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;
