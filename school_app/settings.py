@@ -38,13 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'class_app',
-    'teachers_app',
-    'students_app',
-    'accounts_app',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'authapp',
+    'djoser',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
+
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,6 +96,17 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK ={
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSIONS_CLASSES': (
+        'rest_framework.permission.IsAuthenticated',
+    ),
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -129,3 +146,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join( BASE_DIR, 'static')
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://localhost:1234",
+    "http://127.0.0.1:1234",
+    "http://127.0.0.1:3000",
+]

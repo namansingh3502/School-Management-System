@@ -8,4 +8,7 @@ module.exports = {
     opacity: ({ after }) => after(["disabled"]),
   },
   plugins: [require("@tailwindcss/forms")],
+  corePlugins: {
+    maxWidth: false,
+  }
 };
