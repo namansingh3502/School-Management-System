@@ -23,13 +23,14 @@ export default function Login(){
           console.log( "body", response.body );
        }
        else{
-        return response.json();
+         return response.json();
        }
      })
      .then( data => {
        const token = "Token " + data["auth_token"];
        localStorage.setItem('auth_token', token);
-    });
+       window.location = "http://127.0.0.1:1234/home/";
+     });
   }
 
   return(
@@ -56,7 +57,7 @@ export default function Login(){
             type="text"
             id="location"
             placeholder="Your Username"
-            onChange={(e) => updateUsername(e.target.value)}
+            onChange={e => updateUsername(e.target.value)}
             className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 my-2 rounded shadow"
           />
           </label>
@@ -71,7 +72,7 @@ export default function Login(){
             id="password"
             type="password"
             placeholder="Your Password"
-            onChange={(e) => updatePassword(e.target.value)}
+            onChange={e => updatePassword(e.target.value)}
             className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 my-2 rounded shadow"
           />
           </label>
