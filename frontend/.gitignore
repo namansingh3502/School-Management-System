@@ -6,3 +6,4 @@ dist/
 coverage/
 .idea
 .parcel-cache/
+__pycache__
