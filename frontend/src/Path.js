@@ -1,44 +1,15 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Dashboard from "./Dashboard"
+import React from "react"
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
-export default function Path() {
-
-  let validated = false;
-
-  async function checkAuthToken() {
-
-    const res = await fetch(`http://127.0.0.1:8000/auth/users/me/`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('auth_token'),
-        },
-      }
-    );
-    const data = await res.json();
-    console.log(data);
-    if( res.ok ){
-      validated = true;
-    }
-  }
-
-    checkAuthToken().then( () => {
-    });
+const Protected = () => <h3>Protected</h3>;
 
 
-  if( !validated ){
-    return <Redirect to="/login" />
-  }
-  else{
-    return(
+export default function Path () {
+  return (
+    <Router>
       <div>
-        <Router>
-          <Switch>
-            <Route path='/home'>
-              <Dashboard/>
-            </Route>
-          </Switch>
-        </Router>
+        <Route path="/home" component={Protected} />
       </div>
-    )
-  };
+    </Router>
+  )
 }
