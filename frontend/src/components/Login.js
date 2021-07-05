@@ -8,7 +8,6 @@ export default class Login extends Component{
     this.state = {
       username:"",
       password:"",
-      redirectToReferrer: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,8 +30,8 @@ export default class Login extends Component{
       )
       .then(response => {
         if (response.status === 200) {
-          localStorage.setItem("Token", "Token " + response.data.auth_token)
-          this.setState({redirectToReferrer: true});
+          localStorage.setItem("Token", "TOKEN " + response.data.auth_token);
+          this.props.data.handleSuccessfulAuth;
         }
       })
       .catch(error => console.log("login error : ", error));
@@ -41,9 +40,8 @@ export default class Login extends Component{
   }
 
   render() {
-    const { redirectToReferrer } = this.state;
 
-    if( redirectToReferrer === true ){
+    if( this.props.data.loggedInStatus === "LOGGED_IN" ){
        return <Redirect to={"/dashboard"}/>
     }
 

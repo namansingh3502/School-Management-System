@@ -20,23 +20,12 @@ export default class App extends Component{
 
   constructor(props) {
     super(props);
-
     this.state = {
-      loggedInStatus: "NOT_LOGGED_IN",
-      tokenValidationStatus: "Loading",
+      loggedInStatus: "LOGGED_OUT",
       user:{}
     }
-
-    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
 
-  handleSuccessfulAuth(data) {
-    this.setState({ loggedInStatus: "LOGGED_IN" });
-
-    localStorage.setItem("Token", data.auth_token );
-    console.log("logged in ", this.state.loggedInStatus, data.auth_token );
-    this.props.history.push("/dashboard");
-  }
 
   checkLoginStatus() {
 
@@ -53,27 +42,20 @@ export default class App extends Component{
       )
       .then(response => {
         if ( response.status === 200 ){
-            this.setState({
-              loggedInStatus: "LOGGED_IN",
-            });
-            console.log( response.data)
-            this.setState({ user: response.data })
+          this.setState({
+            user: response.data,
+            loggedInStatus: "LOGGED_IN",
+          })
         }
         else if (
-            response.status !== 200 &&
-            this.state.loggedInStatus === "LOGGED_IN"
-          ){
-            localStorage.clear();
-            this.setState({
-              loggedInStatus: "NOT_LOGGED_IN",
-              user: {}
-            });
-
-          <Redirect to={{
-            pathname: '/login',
-            state: { from: props.location }
-          }} />
-
+          response.status !== 200 &&
+          this.state.loggedInStatus === "LOGGED_IN"
+        ){
+          localStorage.clear();
+          this.setState({
+            loggedInStatus: "NOT_LOGGED_IN",
+            user: {}
+          });
         }
       })
       .catch(error => {

@@ -7,26 +7,16 @@ export default class Dashboard extends Component {
   }
 
   render(){
-    console.log("loggedinstatus", this.props.data.loggedInStatus, this.props.data.tokenValidationStatus)
-
-    if (
-      this.props.data.loggedInStatus === "NOT_LOGGED_IN"
-      && this.props.data.tokenValidationStatus === "Loading"
-    ){
-      return (<p>Loading...</p>)
+    console.log("loggedinstatus", this.props.data.loggedInStatus)
+    if ( this.props.data.loggedInStatus === "LOGGED_OUT"){
+      return(<p>Loading...</p>)
     }
-    if (
-      this.props.data.loggedInStatus === "NOT_LOGGED_IN"
-      && this.props.data.tokenValidationStatus === "Loaded"
-    ) {
-      return (<p>Loading...</p>)
-    }
-
-
-    return <div>
+    else {
+      return(<div>
         <p> Login {this.props.data.loggedInStatus}</p>
         <p> Token {this.props.data.tokenValidationStatus}</p>
         <p> User {this.props.data.user.username}</p>
-    </div>
+      </div>)
+    }
   }
 }
