@@ -18,8 +18,7 @@ from django.urls import path, include
 from authapp import views
 
 urlpatterns = [
-    path('index/', views.index, name="index"),
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
-    path('restricted/', views.restricted, name="restricted"),
+    path("profile", views.profile, name="profile")
 ]
