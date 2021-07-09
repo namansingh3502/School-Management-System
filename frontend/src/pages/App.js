@@ -13,6 +13,7 @@ import axios from "axios";
 
 import Login from "../components/Login"
 import Dashboard from "./Dashboard";
+import Sidebar from "../components/Sidebar";
 //import PrivateRoute from "../components/PrivateRoute";
 
 
@@ -74,6 +75,10 @@ export default class App extends Component{
 
       <Route exact path={"/login"} >
         <Login data={this.state} />
+      </Route>
+
+      <Route exact path={"/sidebar"} >
+        <Sidebar/>
       </Route>
 
       <Route exact path={"/dashboard"} >
