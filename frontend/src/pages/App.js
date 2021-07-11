@@ -27,7 +27,6 @@ export default class App extends Component{
     }
   }
 
-
   checkLoginStatus() {
 
     const Token = localStorage.getItem("Token");
@@ -69,22 +68,17 @@ export default class App extends Component{
   }
 
   render(){
+
     return (
-
     <Switch>
-
       <Route exact path={"/login"} >
         <Login data={this.state} />
       </Route>
 
-      <Route exact path={"/sidebar"} >
+      <Route exact path={`/:user`} >
         <Sidebar/>
-      </Route>
-
-      <Route exact path={"/dashboard"} >
         <Dashboard data={this.state} />
       </Route>
-
     </Switch>
   );}
 };
