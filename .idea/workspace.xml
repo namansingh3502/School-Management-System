@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/school_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/school_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +82,7 @@
       <workItem from="1625587842805" duration="1798000" />
       <workItem from="1625598645685" duration="9334000" />
       <workItem from="1625646183864" duration="1356000" />
-      <workItem from="1625657281316" duration="5872000" />
+      <workItem from="1625657281316" duration="6689000" />
     </task>
     <servers />
   </component>
