@@ -55,7 +55,7 @@ const Sidebar = (props) => {
               nexturl={item.nexturl}
             />
           })}
-          <li className="fixed bottom-4 flex items-start mb-1 transition duration-500 ease-in-out text-white hover:text-gray-700 hover:bg-white transform hover:-translate-y-0.5 hover:scale-100 rounded-2xl py-1 w-full">
+          <li className="fixed bottom-4 flex items-start mb-1 transition duration-500 ease-in-out text-white hover:text-gray-700 hover:bg-white transform hover:-translate-y-0.5 hover:scale-100 rounded-2xl py-1 w-72">
             <Link to={`logout`} className="flex items-center px-3 text-center" >
               <GiExitDoor size="1.5em"/>
               <span className="pl-4 text-xl">Logout</span>
@@ -63,8 +63,6 @@ const Sidebar = (props) => {
           </li>
         </ul>
       </div>
-
-
     </div>
   )
 }
