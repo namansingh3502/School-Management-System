@@ -14,23 +14,28 @@ import axios from "axios";
 import Login from "../components/Login"
 import Dashboard from "./Dashboard";
 import Sidebar from "../components/Sidebar";
-//import PrivateRoute from "../components/PrivateRoute";
-
+import Path from "./Path";
 
 export default class App extends Component{
-
   constructor(props) {
     super(props);
     this.state = {
       loggedInStatus: "LOGGED_OUT",
+      loadingStatus: "NOT_LOADED",
       user:{}
     }
+
+    this.checkLoginStatus = this.checkLoginStatus.bind(this)
+    this.handleState = this.handleState.bind(this)
+  }
+
+  handleState( state ) {
+    this.setState( state )
   }
 
   checkLoginStatus() {
 
     const Token = localStorage.getItem("Token");
-    console.log( "Here", Token)
 
     axios
       .get("http://127.0.0.1:8000/auth/users/me/",
@@ -45,6 +50,7 @@ export default class App extends Component{
           this.setState({
             user: response.data,
             loggedInStatus: "LOGGED_IN",
+            loadingStatus: "LOADED"
           })
         }
         else if (
@@ -54,30 +60,33 @@ export default class App extends Component{
           localStorage.clear();
           this.setState({
             loggedInStatus: "NOT_LOGGED_IN",
+            loadingStatus: "LOADED",
             user: {}
-          });
+          })
         }
       })
       .catch(error => {
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN",
+          loadingStatus: "ERROR",
+          user: {}
+        })
         console.log("check login error", error);
       });
   }
 
-  componentDidMount() {
-    this.checkLoginStatus();
-  }
-
   render(){
-
     return (
     <Switch>
-      <Route exact path={"/login"} >
-        <Login data={this.state} />
+      <Route exact path={"/login"}>
+        <Login
+          data={this.state}
+          checkLoginStatus={this.checkLoginStatus}
+          handleState={this.handleState}
+        />
       </Route>
-
-      <Route exact path={`/:user`} >
-        <Sidebar/>
-        <Dashboard data={this.state} />
+      <Route path={`/:user`}>
+        <Path data={this.state} checkLoginStatus={this.checkLoginStatus} />
       </Route>
     </Switch>
   );}

@@ -31,7 +31,12 @@ export default class Login extends Component{
       .then(response => {
         if (response.status === 200) {
           localStorage.setItem("Token", "TOKEN " + response.data.auth_token);
-          this.props.data.handleSuccessfulAuth;
+          const data = {
+            loggedInStatus: "LOGGED_IN",
+            loadingStatus: "LOADED",
+            user: {}
+          }
+          this.props.handleState( data );
         }
       })
       .catch(error => console.log("login error : ", error));
@@ -39,10 +44,18 @@ export default class Login extends Component{
     event.preventDefault();
   }
 
-  render() {
+  componentDidMount(){
+    this.props.checkLoginStatus( this.props );
+  }
 
-    if( this.props.data.loggedInStatus === "LOGGED_IN" ){
-       return <Redirect to={"/dashboard"}/>
+  render() {
+    const data = this.props.data;
+
+    if ( data.loadingStatus === "NOT_LOADED" ){
+      return ( <h1 className="text-3xl" > LOADING............... </h1> )
+    }
+    if ( data.loadingStatus === "LOADED" && data.loggedInStatus === "LOGGED_IN" ) {
+      return <Redirect to={"/user"}/>
     }
 
     return(
