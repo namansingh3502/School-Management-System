@@ -59,7 +59,7 @@ export default class Login extends Component{
     }
 
     return(
-      <div className="container min-w-full h-screen flex justify-center items-center">
+      <div className="container min-w-full h-screen flex justify-center items-center bg-gradient-to-r from-green-400 to-blue-500 ">
         <div className="w-1/3">
           <form
             className="border-blue-300	p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg"

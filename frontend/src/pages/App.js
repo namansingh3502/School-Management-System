@@ -85,7 +85,7 @@ export default class App extends Component{
           handleState={this.handleState}
         />
       </Route>
-      <Route path={`/:user`}>
+      <Route path={``}>
         <Path data={this.state} checkLoginStatus={this.checkLoginStatus} />
       </Route>
     </Switch>

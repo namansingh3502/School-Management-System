@@ -8,7 +8,11 @@ import axios from "axios";
 
 import Sidebar from "../components/Sidebar";
 import Dashboard from "./Dashboard";
+import Profile from "../components/Profile";
 
+const Topbar = () => {
+  return(<div className="w-full h-20 bg-gray-800"></div>)
+}
 
 export default class Path extends Component{
   constructor(props) {
@@ -32,11 +36,13 @@ export default class Path extends Component{
     return(
       <>
       <Sidebar/>
+      <Topbar/>
       <Switch>
-        <Route exact path={`/:user/dashboard`}>
+        <Route exact path={`/`}>
           <Dashboard data={this.props.data}/>
         </Route>
-        <Route exact path={'/:user/profile'}>
+        <Route exact path={'/profile'}>
+          <Profile data={this.props.data} />
         </Route>
       </Switch>
       </>

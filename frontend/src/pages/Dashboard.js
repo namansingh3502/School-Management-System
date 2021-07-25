@@ -15,9 +15,9 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="ml-80 p-10 min-h-screen ">
+      <div className="ml-80 py-10 px-5 min-h-screen bg-gray-200">
         <h1 className="text-4xl">Dashboard</h1>
-        <div className="grid grid-cols-4 gap-14 px-10 pb-10">
+        <div className="grid grid-cols-4 gap-8 px-5 pb-5">
           <Link to="#" className="h-auto w-auto bg-gray-400 mt-24">
             <div className="relative -top-1/4 h-20 w-20 bg-white rounded-full mx-auto text-center">
               <BsFillInboxFill className="h-10 w-10 mx-auto relative top-1/4" />
@@ -54,8 +54,8 @@ class Dashboard extends Component {
             </div>
           </Link>
         </div>
-        <div className="flex px-3 mt-8 w-auto h-auto">
-          <div className="w-5/12  ml-8 border border-black bg-white p-5">
+        <div className="flex px-5 mt-8 w-auto h-auto">
+          <div className="border border-black bg-white p-5" style={{width:840}}>
             <FullCalendar
               plugins={[dayGridPlugin]}
               initialView="dayGridMonth"
@@ -67,7 +67,7 @@ class Dashboard extends Component {
             />
           </div>
 
-          <div className="w-1/4 border-black border-1 ml-10 bg-white px-8 pt-3">
+          <div className="border-black border-1 ml-8 bg-white px-6 pt-3" style={{width:400}}>
             <div className="text-center border-b-2 border-black p-3">
               <span className="text-3xl font-bold">Notice Board</span>
             </div>
@@ -89,7 +89,7 @@ class Dashboard extends Component {
 
             </div>
           </div>
-          <div className="w-1/4 border-black border-1 ml-10 bg-white px-8 pt-3">
+          <div className="border-black border-1 ml-8 bg-white px-6 pt-3" style={{width:400}}>
             <div className="text-center border-b-2 border-black p-3">
               <span className="text-3xl font-bold">Recent Activity</span>
             </div>
