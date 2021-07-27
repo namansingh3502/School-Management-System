@@ -25,7 +25,7 @@ const Sidebar = (props) => {
   const navlist = [
     { name:"Dashboard", icon:<BsFillGridFill size="1.5em"/>, nexturl:"" },
     { name:"My Profile", icon:<BiUser size="1.5em"/>, nexturl:"profile" },
-    { name:"Class Timetables", icon:<BsCalendar size="1.5em"/>, nexturl:"timetable" },
+    { name:"Class Routine", icon:<BsCalendar size="1.5em"/>, nexturl:"timetable" },
     { name:"Academic Syllabus", icon:<GiBookshelf size="1.5em"/>, nexturl:"syllabus" },
     { name:"Study Materials", icon:<MdLibraryBooks size="1.5em"/>, nexturl:"study-materials" },
     { name:"Messages", icon:<BiMessageDetail size="1.5em"/>, nexturl:"messages" },

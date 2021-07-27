@@ -44,7 +44,7 @@ export default class Profile extends Component {
             <img className="w-56 h-526 rounded-full " src={userimg} alt="" width="384" height="512"/>
           </div>
           <div className="my-auto place-items-center">
-            <h1 className="font-medium text-4xl py-6">Naman Singh</h1>
+            <h1 className="font-medium text-4xl py-6">Steven Johnson</h1>
             <h1 className="text-2xl" >Software Developer at Somewhere</h1>
             <div className="flex items-center" >
               <GoLocation className="h-4 w-4"/>

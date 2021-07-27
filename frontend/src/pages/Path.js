@@ -9,6 +9,7 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import Dashboard from "./Dashboard";
 import Profile from "../components/Profile";
+import ClassRoutine from "../components/ClassRoutine";
 
 const Topbar = () => {
   return(<div className="w-full h-20 bg-gray-800"></div>)
@@ -41,8 +42,11 @@ export default class Path extends Component{
         <Route exact path={`/`}>
           <Dashboard data={this.props.data}/>
         </Route>
-        <Route exact path={'/profile'}>
+        <Route exact path={`/profile`}>
           <Profile data={this.props.data} />
+        </Route>
+        <Route exact path={`/Class-Routine`}>
+          <ClassRoutine data={this.props.data} />
         </Route>
       </Switch>
       </>
