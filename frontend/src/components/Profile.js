@@ -28,6 +28,14 @@ export default class Profile extends Component {
       { key:"DEGREE NAME ", value:"COLLAGE NAME" },
       { key:"DEGREE NAME ", value:"COLLAGE NAME" },
     ]
+    const AcademicProfile = [
+      { key: "Class 1 : ", value: "Subject 1" },
+      { key: "Class 1 : ", value: "Subject 2" },
+      { key: "Class 1 : ", value: "Subject 1" },
+      { key: "Class 2 : ", value: "Subject 1" },
+      { key: "Class 3 : ", value: "Subject 1" },
+      { key: "Class 3 : ", value: "Subject 2" },
+    ]
 
     return(
       <div className="ml-80">
@@ -46,26 +54,46 @@ export default class Profile extends Component {
         </div>
         <div className="m-5 p-8 bg-blue-100">
           <div className="mb-5">
-            <span className="text-4xl underline">Personal Details</span>
-            <div className="mx-4 w-full h-auto flex p-4 text-2xl flex flex-wrap">
+            <span className="text-2xl underline">Personal Details</span>
+            <div className="mx-4 w-full h-auto flex p-2 text-xl flex flex-wrap">
               {PersonalDetail.map((item) => {
                 return (
-                  <div className="w-1/2 py-2" key={item.key}>
-                    <span className="font-medium pr-6">{item.key}</span><span>{item.value}</span>
+                  <div className="w-1/2 py-1" key={item.key}>
+                    <span className="font-medium pr-4">{item.key}</span><span>{item.value}</span>
                   </div>)
               })}
             </div>
           </div>
 
-          <div>
-            <span className="text-4xl underline">Educational Details</span>
-            <div className="mx-4 w-full h-auto flex p-4 text-2xl flex flex-wrap">
+          <div className="mb-5">
+            <span className="text-2xl underline">Educational Details</span>
+            <div className="mx-4 w-full h-auto flex p-4 text-xl flex flex-wrap">
               {Education.map((item) => {
                 return (<div className="w-full py-2" key={item.key}>
-                  <span className="font-medium pr-2">Degree : </span><span>{item.key}</span>
-                  <span className="ml-32 font-medium pr-2">Collage/University : </span><span>{item.value}</span>
+                  <h1 className="font-medium pr-4">Degree : <span className="pl-4 font-normal">{item.key}</span></h1>
+                  <h1 className="font-medium pr-2">Collage/University : <span className="pl-4 font-normal">{item.value}</span> </h1>
                 </div>)
               })}
+            </div>
+          </div>
+
+          <div className="mb-5">
+            <span className="text-2xl underline">Academic Profile</span>
+            <div className="mx-4 w-full h-auto flex p-4 text-xl flex flex-wrap">
+              {AcademicProfile.map((item) => {
+                return (
+                  <div className="w-1/2 py-1" key={item.key}>
+                    <span className="font-medium pr-4">{item.key} </span><span>{item.value}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="mb-5">
+            <span className="text-2xl underline">Academic Badges</span>
+            <div className="mx-4 w-full h-auto flex p-4 text-xl flex flex-wrap">
+              <h1>All Badges</h1>
             </div>
           </div>
         </div>

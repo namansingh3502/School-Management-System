@@ -43,7 +43,7 @@ const Sidebar = (props) => {
       </div>
       <div id={"USER"} className="mt-8">
         <img className="w-36 h-36 rounded-full mx-auto" src={userimg} alt="" width="384" height="512"/>
-        <h1 className="text-3xl text-center text-white my-5">{user}</h1>
+        <h1 className="text-xl text-center text-white my-5">{user}</h1>
       </div>
       <div id={"SIDEBARLINK"} >
         <ul className="mt-10 w-full py-3 px-2 font-semibold ">
