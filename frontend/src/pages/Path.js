@@ -10,9 +10,10 @@ import Sidebar from "../components/Sidebar";
 import Dashboard from "./Dashboard";
 import Profile from "../components/Profile";
 import ClassRoutine from "../components/ClassRoutine";
+import StudentInformation from"../components/StudentInformation"
 
 const Topbar = () => {
-  return(<div className="w-full h-20 bg-gray-800"></div>)
+  return(<div className="w-full h-14 bg-gray-800"></div>)
 }
 
 export default class Path extends Component{
@@ -21,7 +22,7 @@ export default class Path extends Component{
   }
 
   componentDidMount() {
-    this.props.checkLoginStatus( this.props );
+    //this.props.checkLoginStatus( this.props );
   }
 
   render(){
@@ -42,11 +43,14 @@ export default class Path extends Component{
         <Route exact path={`/`}>
           <Dashboard data={this.props.data}/>
         </Route>
-        <Route exact path={`/profile`}>
+        <Route exact path={`/Profile`}>
           <Profile data={this.props.data} />
         </Route>
         <Route exact path={`/Class-Routine`}>
           <ClassRoutine data={this.props.data} />
+        </Route>
+        <Route exact path={`/Student-Information`}>
+          <StudentInformation data={this.props.data} />
         </Route>
       </Switch>
       </>

@@ -20,8 +20,8 @@ export default class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      loggedInStatus: "LOGGED_OUT",
-      loadingStatus: "NOT_LOADED",
+      loggedInStatus: "LOADED",
+      loadingStatus: "LOADED",
       user:{}
     }
 

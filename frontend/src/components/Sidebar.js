@@ -24,12 +24,12 @@ const Sidebar = (props) => {
   const { user } = useParams();
   const navlist = [
     { name:"Dashboard", icon:<BsFillGridFill size="1.5em"/>, nexturl:"" },
-    { name:"My Profile", icon:<BiUser size="1.5em"/>, nexturl:"profile" },
-    { name:"Class Routine", icon:<BsCalendar size="1.5em"/>, nexturl:"timetable" },
+    { name:"My Profile", icon:<BiUser size="1.5em"/>, nexturl:"Profile" },
+    { name:"Class Routine", icon:<BsCalendar size="1.5em"/>, nexturl:"Class-Routine" },
     { name:"Academic Syllabus", icon:<GiBookshelf size="1.5em"/>, nexturl:"syllabus" },
     { name:"Study Materials", icon:<MdLibraryBooks size="1.5em"/>, nexturl:"study-materials" },
     { name:"Messages", icon:<BiMessageDetail size="1.5em"/>, nexturl:"messages" },
-    { name:"Student Information", icon:<FaUsers size="1.5em"/>, nexturl:"stduent-info" },
+    { name:"Student Information", icon:<FaUsers size="1.5em"/>, nexturl:"Student-Information" },
     { name:"Student Marksheet", icon:<HiOutlineDocumentReport size="1.5em"/>, nexturl:"student-marksheet" },
     { name:"Student Attendence", icon:<GiBlackBook size="1.5em"/>, nexturl:"student-attendence" },
   ]
@@ -41,11 +41,11 @@ const Sidebar = (props) => {
             Logo Here
           </div>
       </div>
-      <div id={"USER"} className="mt-8">
+      <div className="mt-8">
         <img className="w-36 h-36 rounded-full mx-auto" src={userimg} alt="" width="384" height="512"/>
         <h1 className="text-xl text-center text-white my-5">{user}</h1>
       </div>
-      <div id={"SIDEBARLINK"} >
+      <div >
         <ul className="mt-10 w-full py-3 px-2 font-semibold ">
           {navlist.map((item) => {
             return <NavbarItem

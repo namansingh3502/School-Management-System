@@ -55,7 +55,7 @@ export default class Login extends Component{
       return ( <h1 className="text-3xl" > LOADING............... </h1> )
     }
     if ( data.loadingStatus === "LOADED" && data.loggedInStatus === "LOGGED_IN" ) {
-      return <Redirect to={"/user"}/>
+      return <Redirect to={""}/>
     }
 
     return(

@@ -9,17 +9,27 @@ export default class ClassRoutine extends Component{
       { key:"THURSDAY" }, { key:"FRIDAY" }, { key:"SATURDAY" }, { key:"SUNDAY" }
     ]
     const Class = [
-      [{ key: "class 1" }, { key: "class 1" }, { key: "class 1" }, { key: "class 1" }, { key: "class 1" },
-        { key: "class 1" }, { key: "class 1" }, { key: "class 1" }],
-      [{ key: "class 1" }, { key: "class 1" }, { key: "class 1" }, { key: "class 1" }, { key: "class 1" },
-        { key: "class 1" }, { key: "class 1" }, { key: "class 1" }],
+      ["class 1", "class 2", "class 3", "class 4", "class 5", "class 6", "class 7", "class 8"],
+      ["class 1", "class 2", "class 3", "class 4", "class 5", "class 6", "class 7", "class 8"],
+      ["class 1", "class 2", "class 3", "class 4", "class 5", "class 6", "class 7", "class 8"],
+      ["class 1", "class 2", "class 3", "class 4", "class 5", "class 6", "class 7", "class 8"],
     ]
+    const classes = [ "class 1" , "class 2" , "class 3" , "class 4" , "class 5" ];
 
     return(
       <div className="ml-80">
         <div className="ml-2  min-h-screen px-5">
           <div className="py-5">
-              <h1>Select Class</h1>
+            <label>
+              <span>Class</span>
+              <select className="ml-5">
+                {classes.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
 
           <table className="border-collapse border-1 border-green-800 w-full text-center text-lg">
@@ -33,18 +43,16 @@ export default class ClassRoutine extends Component{
               </tr>
             </thead>
             <tbody>
-              {Class.map((row, index) => {
+              {Class.map((row, rowindex) => {
                 return(
-                  <tr key={index}>
+                  <tr key={rowindex}>
                     {row.map((col) => {
-                      return(<td className="border border-green-600" key={col.key}>{col.key}</td>)
+                      return(<td className="border border-green-600" key={col}>{col}</td>)
                     })}
                   </tr>
                 )
               })
-
               }
-
             </tbody>
 
           </table>
