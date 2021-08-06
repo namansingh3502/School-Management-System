@@ -11,9 +11,10 @@ import Dashboard from "./Dashboard";
 import Profile from "../components/Profile";
 import ClassRoutine from "../components/ClassRoutine";
 import StudentInformation from"../components/StudentInformation"
+import Demo from"../pages/demo"
 
 const Topbar = () => {
-  return(<div className="w-full h-14 bg-gray-800"></div>)
+  return(<div className="ml-80 fixed w-full h-14 bg-gray-800 z-40"></div>)
 }
 
 export default class Path extends Component{
@@ -37,7 +38,7 @@ export default class Path extends Component{
     }
     return(
       <>
-      <Sidebar/>
+      <Sidebar className=""/>
       <Topbar/>
       <Switch>
         <Route exact path={`/`}>
@@ -51,6 +52,9 @@ export default class Path extends Component{
         </Route>
         <Route exact path={`/Student-Information`}>
           <StudentInformation data={this.props.data} />
+        </Route>
+        <Route exact path={`/demo`}>
+          <Demo />
         </Route>
       </Switch>
       </>
