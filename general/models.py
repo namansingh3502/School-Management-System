@@ -15,7 +15,7 @@ class Notice(models.Model):
 
 
 class Activity(models.Model):
-    department = models.ForeignKey(DepartmentDetail, on_delete=models.CASCADE)
+    department = models.ForeignKey(DepartmentDetail, on_delete=models.CASCADE, related_name='activity')
     message = models.CharField(blank=False, null=False, max_length=100)
     datetime = models.DateTimeField(auto_now_add=True)
 
