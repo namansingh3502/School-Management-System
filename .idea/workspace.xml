@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="added dashboard api">
+    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="updated profile api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/general/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/general/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/school_app/settings.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -122,7 +122,10 @@
       <workItem from="1628583040193" duration="4186000" />
       <workItem from="1628602707310" duration="11388000" />
       <workItem from="1628677190155" duration="736000" />
-      <workItem from="1628687681352" duration="7428000" />
+      <workItem from="1628687681352" duration="7759000" />
+      <workItem from="1628782748094" duration="191000" />
+      <workItem from="1628789308417" duration="300000" />
+      <workItem from="1628791280106" duration="3985000" />
     </task>
     <task id="LOCAL-00001" summary="added dashboard api">
       <created>1628677231414</created>
@@ -138,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628677311553</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updated profile api">
+      <created>1628707683133</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628707683133</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added dashboard api" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dashboard api" />
+    <MESSAGE value="updated profile api" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated profile api" />
   </component>
 </project>

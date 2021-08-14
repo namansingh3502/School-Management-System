@@ -20,5 +20,6 @@ from authapp import views
 urlpatterns = [
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
-    path("profile", views.profile, name="profile")
+    path('personaldetails', views.personalDetails, name="profile"),
+    path('eduactionaldetails', views.educationalDetails, name="eduaction"),
 ]
