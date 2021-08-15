@@ -19,12 +19,7 @@ def personalDetails(request):
 @permission_classes([IsAuthenticated])
 def educationalDetails(request):
 
-    educationDetailsLists = request.user.userprofile
-
-    print(educationDetailsLists)
-
-    #serializer = EducationDetailsSerializer(educationDetailsLists)
-
-    #return Response(serializer.data)
-    return Response("Hello")
+    educationDetailsLists = request.user.educationdetails_set
+    serializer = EducationDetailsSerializer(educationDetailsLists, many=True)
+    return Response(serializer.data)
 

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 
     'authapp',
     'department',
-    'general'
+    'general',
+    'class_app',
 ]
 
 MIDDLEWARE = [
