@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import *
-from department.serializers import DepartmentDetailsSerializers
 
 class ActivityList(serializers.ModelSerializer):
 

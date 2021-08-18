@@ -2,6 +2,34 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<str:className>/<str:studentId>',views.StudentProfile,name="studentProfile"),
-    path('<str:className>',views.ClassProfile,name="classProfile"),
+    path(
+        'profile/<str:className>/<str:studentId>',
+         views.StudentProfile,
+         name="studentProfile"
+    ),
+    path(
+        'profile/<str:className>',
+        views.ClassProfile,
+        name="classProfile"
+    ),
+    path(
+        'score/<str:className>/<str:studentId>',
+        views.StudentAcademic.as_view(),
+        name="studentAcademic"
+    ),
+    path(
+        'score/<str:className>',
+        views.ClassAcademic.as_view(),
+        name="classAcademic"
+    ),
+    path(
+        'attendance/<str:className>/<str:studentId>',
+        views.StudentAttendance.as_view(),
+        name="studentAttendance"
+    ),
+    path(
+        'attendance/<str:className>',
+        views.ClassAttendance.as_view(),
+        name="classAttendance"
+    ),
 ]

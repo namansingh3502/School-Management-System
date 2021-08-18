@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
 from class_app.models import ClassDetail
 from .models import *
 from .serializers import *
@@ -13,10 +13,9 @@ from .serializers import *
 @permission_classes([IsAuthenticated])
 def StudentProfile(request,className,studentId):
 
-    class_instance = ClassDetail.objects.filter(name=className)[0]
-    details=StudentDetails.objects.filter(dept=class_instance,name=studentId)
-
-    serializer=StudentProfileSerializer(details,many=True)
+    class_instance = ClassDetail.objects.get(name=className)
+    details = StudentDetails.objects.get(dept=class_instance,name=studentId)
+    serializer = StudentProfileSerializer(details)
 
     return Response(serializer.data)
 
@@ -24,9 +23,48 @@ def StudentProfile(request,className,studentId):
 @permission_classes([IsAuthenticated])
 def ClassProfile(request,className):
 
-    class_instance = ClassDetail.objects.filter(name=className)[0]
-    details=StudentDetails.objects.filter(dept=class_instance)
-
-    serializers=StudentProfileSerializer(details,many=True)
+    class_instance = ClassDetail.objects.get(name=className)
+    details = StudentDetails.objects.filter(dept=class_instance)
+    serializers = StudentProfileSerializer(details,many=True)
 
     return Response(serializers.data)
+
+class StudentAcademic(APIView):
+
+    def get(self, request,className,studentId,format=None):
+
+        class_instance = ClassDetail.objects.get(name=className)
+        student_instance = StudentDetails.objects.get(name=studentId)
+        details = AcademicDetails.objects.get(std=class_instance,student=student_instance)
+        serializers = AcademicProfileSerializer(details)
+
+        return Response(serializers.data)
+
+
+class ClassAcademic(APIView):
+
+    def get(self, request, className, format=None):
+        class_instance = ClassDetail.objects.get(name=className)
+        details = AcademicDetails.objects.filter(std=class_instance)
+        serializers = AcademicProfileSerializer(details, many=True)
+
+        return Response(serializers.data)
+
+class StudentAttendance(APIView):
+
+    def get(self, request,studentId,className,format=None):
+
+        student_instance = StudentDetails.objects.get(name=studentId).studentattendance
+        serializers = StudentAttendanceSerializer(student_instance)
+
+        return Response(serializers.data)
+
+
+class ClassAttendance(APIView):
+
+    def get(self, request, className, format=None):
+        class_instance = ClassDetail.objects.get(name=className)
+        details = StudentAttendance.objects.filter(std=class_instance)
+        serializers = StudentAttendanceSerializer(details)
+
+        return Response(serializers.data)

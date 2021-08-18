@@ -41,4 +41,3 @@ class EducationDetails(models.Model):
 def createUserProfile(sender,instance,created,**kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-

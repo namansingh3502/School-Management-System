@@ -9,3 +9,7 @@ class StudentDetailsAdmin(admin.ModelAdmin):
 @admin.register(AcademicDetails)
 class AcademicDetailsAdmin(admin.ModelAdmin):
     list_display = ('student', 'std')
+
+@admin.register(StudentAttendance)
+class AttendanceDetailsAdmin(admin.ModelAdmin):
+    list_display = ('student',)
