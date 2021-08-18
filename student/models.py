@@ -17,7 +17,7 @@ class StudentDetails(models.Model):
     dept = models.ForeignKey('class_app.ClassDetail', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name + "  ===  " + self.registration
+        return self.name
 
 class AcademicDetails(models.Model):
 

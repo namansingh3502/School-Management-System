@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="updated profile api">
-      <change afterPath="$PROJECT_DIR$/student/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/student/urls.py" afterDir="false" />
+    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="working on student profile api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/department/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/department/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/general/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/school_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/school_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +52,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -147,7 +139,7 @@
       <workItem from="1629148976694" duration="2437000" />
       <workItem from="1629219646442" duration="1194000" />
       <workItem from="1629270306501" duration="607000" />
-      <workItem from="1629284573436" duration="8532000" />
+      <workItem from="1629284573436" duration="9931000" />
     </task>
     <task id="LOCAL-00001" summary="added dashboard api">
       <created>1628677231414</created>
@@ -170,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628707683133</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="working on student profile api">
+      <created>1629310833347</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629310833347</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +193,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added dashboard api" />
     <MESSAGE value="updated profile api" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated profile api" />
+    <MESSAGE value="working on student profile api" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on student profile api" />
   </component>
 </project>

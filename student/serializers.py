@@ -4,7 +4,7 @@ from .models import *
 class StudentProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=StudentDetails
-        fields='__all__'
+        fields=('name','registration','father','mother','dob','dept')
 
 class AcademicProfileSerializer(serializers.ModelSerializer):
     class Meta:

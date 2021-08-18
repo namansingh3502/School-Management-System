@@ -13,10 +13,10 @@ from .serializers import *
 @permission_classes([IsAuthenticated])
 def StudentProfile(request,className,studentId):
 
-    class_instance = ClassDetail(name=className)
+    class_instance = ClassDetail.objects.filter(name=className)[0]
+    details=StudentDetails.objects.filter(dept=class_instance,name=studentId)
 
-    details=StudentDetails(dept=class_instance,name=studentId)
-    serializer=StudentProfileSerializer(details)
+    serializer=StudentProfileSerializer(details,many=True)
 
     return Response(serializer.data)
 
@@ -24,11 +24,9 @@ def StudentProfile(request,className,studentId):
 @permission_classes([IsAuthenticated])
 def ClassProfile(request,className):
 
-    class_instance = ClassDetail(name=className)
+    class_instance = ClassDetail.objects.filter(name=className)[0]
+    details=StudentDetails.objects.filter(dept=class_instance)
 
-    details=StudentDetails(dept=class_instance)
+    serializers=StudentProfileSerializer(details,many=True)
 
-    print(details)
-    #serializers=StudentProfileSerializer(details)
-
-    return Response("serializers.data")
+    return Response(serializers.data)
