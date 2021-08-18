@@ -38,10 +38,7 @@ class EducationDetails(models.Model):
 
 
 @receiver(post_save, sender=User)
-def createUserProfile(sender, instance, created, **kwargs):
+def createUserProfile(sender,instance,created,**kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def saveUserProfile(sender, instance, **kwargs):
-    instance.userprofile.save()

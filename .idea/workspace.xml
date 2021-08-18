@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="updated profile api">
-      <change afterPath="$PROJECT_DIR$/class_app/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/class_app/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/student/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/student/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/department/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/department/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/department/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/department/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/general/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/school_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/school_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/school_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +29,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -34,6 +41,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/school_app/urls.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/student/models.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/authapp/urls.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/school_app/settings.py" root0="SKIP_INSPECTION" />
   </component>
@@ -133,7 +141,13 @@
       <workItem from="1628974160591" duration="1669000" />
       <workItem from="1629013984168" duration="599000" />
       <workItem from="1629040114852" duration="3458000" />
-      <workItem from="1629049413297" duration="3886000" />
+      <workItem from="1629049413297" duration="8191000" />
+      <workItem from="1629108553991" duration="599000" />
+      <workItem from="1629115642517" duration="6517000" />
+      <workItem from="1629148976694" duration="2437000" />
+      <workItem from="1629219646442" duration="1194000" />
+      <workItem from="1629270306501" duration="607000" />
+      <workItem from="1629284573436" duration="8532000" />
     </task>
     <task id="LOCAL-00001" summary="added dashboard api">
       <created>1628677231414</created>
