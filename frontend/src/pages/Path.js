@@ -14,7 +14,7 @@ import StudentInformation from"../components/StudentInformation"
 import Demo from"../pages/demo"
 
 const Topbar = () => {
-  return(<div className="ml-80 fixed w-full h-14 bg-gray-800 z-40"></div>)
+  return(<div className="ml-80 fixed w-full h-14 z-40"></div>)
 }
 
 export default class Path extends Component{

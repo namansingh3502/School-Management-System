@@ -6,37 +6,113 @@ import { MdNotificationsActive } from "react-icons/md";
 import { Link } from "react-router-dom";
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import axios from "axios";
+
+const Board = (data) => {
+
+  const val = data.data
+
+  if(data.status=="LOADED"){
+    return(
+      <div className="border-black border-1 ml-8 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
+        <div className="text-center border-b-2 border-black p-3">
+          <span className="text-3xl font-bold">{data.heading}</span>
+        </div>
+        <div className="overflow-auto h-4/5 border-l-8 m-2 pl-6 border-gray-500">
+          {val.map((item,  index) => {
+            return(
+              <div className="my-1" key={index}>
+                <div>
+                  <h1 className="text-2xl text-purple-700 font-semibold">{item.department_name}</h1>
+                  <h2 className="text-md text-purple-700">{item.datetime}</h2>
+                  <h3 className="text-xl ml-4 mt-1">{item.message}</h3>
+                </div>
+
+              </div>
+            )
+          })
+          }
+        </div>
+      </div>
+    )
+  }
+  return(
+    <div className="border-black border-1 ml-8 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
+      <div className="text-center border-b-2 border-black p-3">
+        <span className="text-3xl font-bold">{data.heading}</span>
+      </div>
+      <div className="overflow-auto h-4/5 border-l-8 m-2 pl-6 border-gray-500">
+        <div>NotDone</div>
+      </div>
+    </div>
+  )
+}
 
 class Dashboard extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      activityStatus: "NOT_LOADED",
+      noticeStatus: "NOT_LOADED",
+      notice:[],
+      activity:[],
+    }
+  }
+
+  loadActivityList(url){
+    const Token = localStorage.getItem("Token");
+    axios
+      .get(`http://127.0.0.1:8000/dashboard/${url}`,
+        {
+          headers: {
+            Authorization: Token
+          }
+        }
+      )
+      .then(response => {
+        if ( response.status === 200 ){
+          if(url == "activity") {
+            this.setState({
+              activityStatus: "LOADED",
+              activity: response.data
+            })
+          }
+          else{
+            this.setState({
+              noticeStatus: "LOADED",
+              notice: response.data
+            })
+          }
+        }})
+      .catch(error => {
+        console.log("check login error", error);
+      });
+  }
+
+  componentDidMount() {
+    this.loadActivityList("activity");
+    this.loadActivityList("notice");
   }
 
   render() {
-    let notice_board = [];
-    for (let i = 0; i < 20; i++) { notice_board.push(<h1 className="text-xl font-semibold">Notice Board</h1>);}
-    let recent_activity = [];
-    for (let i = 0; i < 20; i++) { recent_activity.push(<h1 className="text-xl font-semibold">Recent Activity</h1>);}
-
     const quick_link = [
       {key:"CLASSES", value:"CLASS COUNT", icon:<BsFillInboxFill className="h-10 w-10 mx-auto relative top-1/4" />},
       {key:"STUDENTS", value:"STUDENT COUNT", icon:<FaUsers className="h-10 w-10 mx-auto relative top-1/4" /> },
       {key:"PARENTS", value:"PARENT COUNT", icon:<FiActivity className="h-10 w-10 mx-auto relative top-1/4" />},
-      {key:"ATTENDENCE", value:"", icon:<MdNotificationsActive className="h-10 w-10 mx-auto relative top-1/4" /> },
+      {key:"ATTENDANCE", value:"", icon:<MdNotificationsActive className="h-10 w-10 mx-auto relative top-1/4" /> },
     ];
-
     return (
-      <div className="ml-80 py-10 px-5 min-h-screen bg-gray-200">
-        <h1 className="text-4xl">Dashboard</h1>
-        <div className="grid grid-cols-4 gap-8 px-5 pb-5">
+      <div className="ml-80 pt-8 px-5 min-h-screen bg-gray-900">
+        <div className=""><span className="text-4xl font-semibold text-white">Dashboard</span></div>
+        <div className="flex pb-5 mt-2">
           {quick_link.map((item) => {
             return (
-              <Link to="#" className="h-auto w-auto bg-gray-400 mt-24" key={item.key}>
-                <div className="relative -top-1/4 h-16 w-16 bg-white rounded-full mx-auto text-center">
+              <Link to="#" className="h-auto w-1/4 mt-16 pb-4 bg-gray-800 rounded-xl mx-4" key={item.key}>
+                <div className="relative -top-1/4 h-20 w-20 bg-white rounded-full mx-auto text-center">
                   {item.icon}
                 </div>
-                <div className="bg-gray-400" >
+                <div className="text-white">
                   <h1 className="text-2xl font-bold text-center">{item.key}</h1>
                   <h1 className="text-2xl font-bold text-center">{item.value}</h1>
                 </div>
@@ -45,35 +121,32 @@ class Dashboard extends Component {
           })}
 
         </div>
-        <div className="flex px-5 mt-8 w-auto h-auto">
-          <div className="border border-black bg-white p-5" style={{width:840}}>
+        <div className="flex pb-5 mt-1 text-white mx-4">
+          <div className="text-lg border border-black bg-gray-800 p-5 rounded-lg font-semibold w-1/2" >
             <FullCalendar
               plugins={[dayGridPlugin]}
               initialView="dayGridMonth"
               weekends={true}
               events={[
-                { title: 'event 1 skjfsdkfj', date: '2021-07-01' },
-                { title: 'event 2', date: '2021-07-01' }
+                { title: 'event 1', date: '2021-08-01' },
+                { title: 'event 1', date: '2021-08-10' },
+                { title: 'event 2', date: '2021-09-01' },
+                { title: 'event 2', date: '2021-09-04' },
               ]}
             />
           </div>
 
-          <div className="border-black border-1 ml-8 bg-white px-6 pt-3" style={{width:400}}>
-            <div className="text-center border-b-2 border-black p-3">
-              <span className="text-3xl font-bold">Notice Board</span>
-            </div>
-            <div className="overflow-auto h-4/5 border-l-8 m-2 pl-6 border-gray-500">
-              <div>{notice_board}</div>
-            </div>
-          </div>
-          <div className="border-black border-1 ml-8 bg-white px-6 pt-3" style={{width:400}}>
-            <div className="text-center border-b-2 border-black p-3">
-              <span className="text-3xl font-bold">Recent Activity</span>
-            </div>
-            <div className="overflow-auto h-4/5 border-l-8 m-2 pl-6 border-gray-500">
-              <div>{recent_activity}</div>
-            </div>
-          </div>
+          <Board
+            heading={"Notice"}
+            data={this.state.notice}
+            status={this.state.noticeStatus}
+          />
+          <Board
+            heading={"Activity"}
+            data={this.state.activity}
+            status={this.state.activityStatus}
+          />
+
         </div>
       </div>
     )

@@ -46,7 +46,8 @@
     "parcel": "1.12.3",
     "postcss": "7.0.35",
     "prettier": "2.2.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@2.0.3"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@2.0.3",
+    "tailwindcss-filters": "^3.0.0"
   },
   "browserslist": [
     "last 2 Chrome versions"

@@ -26,11 +26,6 @@ export default class App extends Component{
     }
 
     this.checkLoginStatus = this.checkLoginStatus.bind(this)
-    this.handleState = this.handleState.bind(this)
-  }
-
-  handleState( state ) {
-    this.setState( state )
   }
 
   checkLoginStatus() {

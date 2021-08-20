@@ -2,13 +2,15 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
   },
   variants: {
     opacity: ({ after }) => after(["disabled"]),
   },
-  plugins: [require("@tailwindcss/forms")],
-  corePlugins: {
-    maxWidth: false,
-  }
-};
+  plugins: [
+    require('tailwindcss-filters'),
+  ],
+}
