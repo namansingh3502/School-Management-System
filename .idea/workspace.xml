@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="working on student profile api">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="working on student profile api" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/school_app/settings.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pizza" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -139,6 +137,7 @@
       <workItem from="1629284573436" duration="9931000" />
       <workItem from="1629314619582" duration="6096000" />
       <workItem from="1629368062953" duration="1347000" />
+      <workItem from="1629479413679" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="added dashboard api">
       <created>1628677231414</created>

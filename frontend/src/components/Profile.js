@@ -1,41 +1,72 @@
 import {Component} from "react";
 import userimg from "../static/userimg.jpeg";
 import { GoLocation } from "react-icons/go";
+import axios from "axios";
 
 export default class Profile extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      PersonalDetail:[],
+      EducationDetail:[],
+      AcademicProfile:[],
+      PersonalStatus:'LOADING',
+      EducationStatus:'LOADING',
+    }
+  }
+
+  loadDetail(url, info){
+    const Token = localStorage.getItem("Token");
+    axios
+      .get(url,
+        {
+          headers: {
+            Authorization: Token
+          }
+        }
+      )
+      .then(response => {
+          if( response.status === 200 ){
+            if( info === 'personal'){
+              this.setState({
+                PersonalDetail: response.data,
+                PersonalStatus: 'LOADED'
+              })
+            }
+            else{
+              this.setState({
+                EducationDetail: response.data,
+                EducationStatus: 'LOADED'
+
+              })
+            }
+          }
+      })
+      .catch(error => {
+        console.log("check login error", error);
+      });
+  }
+
+  componentDidMount() {
+    const personalDetail = `http://127.0.0.1:8000/auth/personaldetails`;
+    const educationDetail = `http://127.0.0.1:8000/auth/eduactionaldetails`;
+    this.loadDetail(personalDetail, 'personal');
+    this.loadDetail(educationDetail, 'education');
   }
 
   render() {
 
-    const PersonalDetail = [
-      { key:"Name : ", value:"Steven Johnson" },
-      { key:"ID No : ", value:"10005" },
-      { key:"Joining Date : ", value:"07-08-2016" },
-      { key:"Gender : ", value:"Male" },
-      { key:"Father Name : ", value:"Steve Jones" },
-      { key:"Mother Name : ", value:"Naomi Rose" },
-      { key:"Phone : ", value:"+ 88 98568888418" },
-      { key:"E-mail : " , value:"stevenjohnson@gmail.com" },
-      { key:"Subject : ", value:"English" },
-      { key:"Address : ", value:"House #10, Road #6, Australia" },
-    ]
-    const Education = [
-      { key:"DEGREE NAME ", value:"COLLAGE NAME" },
-      { key:"DEGREE NAME ", value:"COLLAGE NAME" },
-      { key:"DEGREE NAME ", value:"COLLAGE NAME" },
-      { key:"DEGREE NAME ", value:"COLLAGE NAME" },
-    ]
-    const AcademicProfile = [
-      { key: "Class 1 : ", value: "Subject 1" },
-      { key: "Class 1 : ", value: "Subject 2" },
-      { key: "Class 1 : ", value: "Subject 1" },
-      { key: "Class 2 : ", value: "Subject 1" },
-      { key: "Class 3 : ", value: "Subject 1" },
-      { key: "Class 3 : ", value: "Subject 2" },
-    ]
+    const Personal = this.state.PersonalDetail
+    const Education = this.state.EducationDetail
+
+
+    { console.log(Personal) }
+    { console.log(Education) }
+
+    if( this.state.EducationStatus !== "LOADED" ){
+      return <div>Loading</div>
+    }
 
     return(
       <div className="ml-80">
@@ -52,40 +83,45 @@ export default class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="m-5 p-8 bg-blue-100">
+        <div className="m-2 p-8 bg-blue-100">
           <div className="mb-5">
             <span className="text-2xl underline">Personal Details</span>
             <div className="mx-4 w-full h-auto flex p-2 text-xl flex flex-wrap">
-              {PersonalDetail.map((item) => {
-                return (
-                  <div className="w-1/2 py-1" key={item.key}>
-                    <span className="font-medium pr-4">{item.key}</span><span>{item.value}</span>
-                  </div>)
-              })}
+              <div className="w-full py-1" >
+                <span className="font-medium pr-4">Name : </span><span>{Personal.prefix} {Personal.name}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">ID No : </span><span>{Personal.idNumber}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">Joining Date : </span><span>{Personal.joiningDate}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">Father Name : </span><span>{Personal.fathersName}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">Mother Name : </span><span>{Personal.mothersName}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">Phone : </span><span>{Personal.phone}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">E-mail : </span><span>{Personal.email}</span>
+              </div>
+              <div className="w-1/2 py-1" >
+                <span className="font-medium pr-4">Address : </span><span>{Personal.address}</span>
+              </div>
             </div>
           </div>
 
           <div className="mb-5">
             <span className="text-2xl underline">Educational Details</span>
             <div className="mx-4 w-full h-auto flex p-4 text-xl flex flex-wrap">
-              {Education.map((item) => {
-                return (<div className="w-full py-2" key={item.key}>
-                  <h1 className="font-medium pr-4">Degree : <span className="pl-4 font-normal">{item.key}</span></h1>
-                  <h1 className="font-medium pr-2">Collage/University : <span className="pl-4 font-normal">{item.value}</span> </h1>
+              {Education.map((item,index) => {
+                return (<div className="w-full py-2" key={index}>
+                  <h1 className="font-medium pr-4">Degree : <span className="pl-4 font-normal">{item.degree}</span></h1>
+                  <h1 className="font-medium pr-2">Collage/University : <span className="pl-4 font-normal">{item.college}</span> </h1>
                 </div>)
-              })}
-            </div>
-          </div>
-
-          <div className="mb-5">
-            <span className="text-2xl underline">Academic Profile</span>
-            <div className="mx-4 w-full h-auto flex p-4 text-xl flex flex-wrap">
-              {AcademicProfile.map((item) => {
-                return (
-                  <div className="w-1/2 py-1" key={item.key}>
-                    <span className="font-medium pr-4">{item.key} </span><span>{item.value}</span>
-                  </div>
-                )
               })}
             </div>
           </div>

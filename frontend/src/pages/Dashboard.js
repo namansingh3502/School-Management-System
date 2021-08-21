@@ -9,16 +9,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import axios from "axios";
 
 const Board = (data) => {
-
   const val = data.data
-
   if(data.status=="LOADED"){
     return(
-      <div className="border-black border-1 ml-8 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
+      <div className="border-black border-1 ml-6 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
         <div className="text-center border-b-2 border-black p-3">
           <span className="text-3xl font-bold">{data.heading}</span>
         </div>
-        <div className="overflow-auto h-4/5 border-l-8 m-2 pl-6 border-gray-500">
+        <div className="overflow-auto h-4/5 border-l-8 pl-6 border-gray-500">
           {val.map((item,  index) => {
             return(
               <div className="my-1" key={index}>
@@ -27,17 +25,15 @@ const Board = (data) => {
                   <h2 className="text-md text-purple-700">{item.datetime}</h2>
                   <h3 className="text-xl ml-4 mt-1">{item.message}</h3>
                 </div>
-
               </div>
             )
-          })
-          }
+          })}
         </div>
       </div>
     )
   }
   return(
-    <div className="border-black border-1 ml-8 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
+    <div className="border-black border-1 ml-6 bg-white px-6 pt-3 bg-gray-800 rounded-xl w-1/4" >
       <div className="text-center border-b-2 border-black p-3">
         <span className="text-3xl font-bold">{data.heading}</span>
       </div>
