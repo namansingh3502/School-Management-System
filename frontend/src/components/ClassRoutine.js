@@ -21,7 +21,7 @@ export default class ClassRoutine extends Component{
         <div className="ml-2  min-h-screen px-5">
           <div className="py-5">
             <label>
-              <span>Class</span>
+              <span>Class</span></label>
               <select className="ml-5">
                 {classes.map((item, index) => (
                   <option key={index} value={item}>
@@ -29,7 +29,7 @@ export default class ClassRoutine extends Component{
                   </option>
                 ))}
               </select>
-            </label>
+
           </div>
 
           <table className="border-collapse border-1 border-green-800 w-full text-center text-lg">

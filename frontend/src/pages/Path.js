@@ -39,7 +39,6 @@ export default class Path extends Component{
     return(
       <>
       <Sidebar className=""/>
-      <Topbar/>
       <Switch>
         <Route exact path={`/`}>
           <Dashboard data={this.props.data}/>
