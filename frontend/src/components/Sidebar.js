@@ -12,7 +12,7 @@ const NavbarItem = (props) => {
   const { name, icon, nexturl } = props ;
   return (
     <li className="flex items-start mb-1 transition duration-500 ease-in-out text-white hover:text-gray-700 hover:bg-white transform hover:-translate-y-0.5 hover:scale-100 rounded-2xl py-1 w-full">
-      <Link to={`@${nexturl}`} className="flex items-center px-3 text-center" >
+      <Link to={`${nexturl}`} className="flex items-center px-3 text-center" >
         {icon}
         <span className="pl-4 text-xl">{name}</span>
       </Link>

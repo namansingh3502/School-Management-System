@@ -49,46 +49,31 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activityStatus: "NOT_LOADED",
-      noticeStatus: "NOT_LOADED",
+      status: "NOT_LOADED",
       notice:[],
       activity:[],
     }
+    this.loadActivityList = this.loadActivityList.bind(this);
   }
 
-  loadActivityList(url){
+  async loadActivityList(){
     const Token = localStorage.getItem("Token");
-    axios
-      .get(`http://127.0.0.1:8000/dashboard/${url}`,
-        {
-          headers: {
-            Authorization: Token
-          }
-        }
-      )
-      .then(response => {
-        if ( response.status === 200 ){
-          if(url == "activity") {
-            this.setState({
-              activityStatus: "LOADED",
-              activity: response.data
-            })
-          }
-          else{
-            this.setState({
-              noticeStatus: "LOADED",
-              notice: response.data
-            })
-          }
-        }})
-      .catch(error => {
-        console.log("check login error", error);
-      });
-  }
 
+    const [ProfileData, EducationData] = await Promise.all([
+      axios(`http://127.0.0.1:8000/dashboard/activity`, { headers: { Authorization: Token }}),
+      axios(`http://127.0.0.1:8000/dashboard/notice`, { headers: { Authorization: Token }}),
+    ])
+    this.setState({
+      notice: ProfileData.data,
+      activity: EducationData.data
+    });
+    console.log("ProfileData");
+    console.log(ProfileData);
+    console.log("EducationData");
+    console.log(EducationData);
+  }
   componentDidMount() {
-    this.loadActivityList("activity");
-    this.loadActivityList("notice");
+    this.loadActivityList();
   }
 
   render() {
@@ -104,7 +89,7 @@ class Dashboard extends Component {
         <div className="flex pb-5 mt-2">
           {quick_link.map((item) => {
             return (
-              <Link to="#" className="h-auto w-1/4 mt-16 pb-4 bg-gray-800 rounded-xl mx-4" key={item.key}>
+              <Link to="#" className="h-auto w-1/4 mt-16 pb-4 bg-gray-880 rounded-xl mx-4" key={item.key}>
                 <div className="relative -top-1/4 h-20 w-20 bg-white rounded-full mx-auto text-center">
                   {item.icon}
                 </div>
