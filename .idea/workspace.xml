@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cbee2c12-0fb1-453f-99e3-991abe28d13b" name="Default Changelist" comment="working on student profile api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/class_app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +30,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/school_app/urls.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/student/views.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/student/models.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/authapp/urls.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/class_app/views.py" root0="SKIP_INSPECTION" />
@@ -69,7 +65,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Django Server.school-app">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="school-app" type="Python.DjangoServer" factoryName="Django server">
       <module name="school_app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,7 +160,7 @@
       <workItem from="1629479413679" duration="28000" />
       <workItem from="1631300412950" duration="5182000" />
       <workItem from="1631346955620" duration="2128000" />
-      <workItem from="1631381259609" duration="4071000" />
+      <workItem from="1631381259609" duration="6273000" />
     </task>
     <task id="LOCAL-00001" summary="added dashboard api">
       <created>1628677231414</created>

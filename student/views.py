@@ -49,7 +49,7 @@ class ClassAcademic(APIView):
 
 class StudentAttendanceView(APIView):
 
-    def get(self, request,studentId,className,format=None):
+    def get(self, request,studentId,format=None,*args,**kwargs):
 
         student_instance = StudentDetails.objects.get(name=studentId).studentattendance
         serializers = StudentAttendanceSerializer(student_instance)
@@ -59,8 +59,10 @@ class StudentAttendanceView(APIView):
 class ClassAttendance(APIView):
 
     def get(self, request, className, format=None):
+
         class_instance = ClassDetail.objects.get(name=className)
         details = StudentAttendance.objects.filter(std=class_instance)
-        serializers = StudentAttendanceSerializer(details)
+
+        serializers = StudentAttendanceSerializer(details,many=True)
 
         return Response(serializers.data)
