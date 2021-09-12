@@ -8,7 +8,6 @@ from .serializers import *
 
 # Create your views here.
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def StudentProfile(request,className,studentId):
@@ -31,15 +30,13 @@ def ClassProfile(request,className):
 
 class StudentAcademic(APIView):
 
-    def get(self, request,className,studentId,format=None):
+    def get(self,request,className,student_pk,format=None):
 
         class_instance = ClassDetail.objects.get(name=className)
-        student_instance = StudentDetails.objects.get(name=studentId)
-        details = AcademicDetails.objects.get(std=class_instance,student=student_instance)
-        serializers = AcademicProfileSerializer(details)
+        details = AcademicDetails.objects.filter(std=class_instance,student=student_pk)
+        serializers = AcademicProfileSerializer(details, many=True)
 
         return Response(serializers.data)
-
 
 class ClassAcademic(APIView):
 
@@ -50,7 +47,7 @@ class ClassAcademic(APIView):
 
         return Response(serializers.data)
 
-class StudentAttendance(APIView):
+class StudentAttendanceView(APIView):
 
     def get(self, request,studentId,className,format=None):
 
@@ -58,7 +55,6 @@ class StudentAttendance(APIView):
         serializers = StudentAttendanceSerializer(student_instance)
 
         return Response(serializers.data)
-
 
 class ClassAttendance(APIView):
 

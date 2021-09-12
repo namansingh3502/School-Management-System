@@ -16,7 +16,7 @@ class StudentDetails(models.Model):
     dept = models.ForeignKey('class_app.ClassDetail', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name + " " + self.registration
+        return self.name
 
 class AcademicDetails(models.Model):
 
@@ -45,7 +45,6 @@ class StudentAttendance(models.Model):
 
     def __str__(self):
         return self.student.name + " " + self.student.registration
-
 
 @receiver(post_save, sender=StudentDetails)
 def createStudentProfile(sender,instance,created,**kwargs):

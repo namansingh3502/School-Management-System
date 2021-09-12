@@ -16,5 +16,14 @@ Including another URLconf
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('schedule', views.schedule, name="schedule" ),
+    path(
+        'self',
+        views.self_schedule,
+        name="self-schedule"
+    ),
+    path(
+        '<str:class_pk>',
+        views.class_schedule,
+        name="class-schedule"
+    )
 ]

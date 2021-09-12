@@ -13,7 +13,7 @@ urlpatterns = [
         name="classProfile"
     ),
     path(
-        'score/<str:className>/<str:studentId>',
+        'score/<str:className>/<str:student_pk>',
         views.StudentAcademic.as_view(),
         name="studentAcademic"
     ),
@@ -24,7 +24,7 @@ urlpatterns = [
     ),
     path(
         'attendance/<str:className>/<str:studentId>',
-        views.StudentAttendance.as_view(),
+        views.StudentAttendanceView.as_view(),
         name="studentAttendance"
     ),
     path(
